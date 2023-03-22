@@ -1,0 +1,36 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/12 15:34:27 by mibernar          #+#    #+#              #
+#    Updated: 2023/01/13 12:08:46 by mibernar         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = ex00
+
+CC = c++ -g
+
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g -o
+
+FILES = main.cpp Fixed.cpp
+
+OBJECTS = $(FILES:.cpp=.o)
+
+all:$(NAME)
+
+$(NAME): $(OBJECTS)
+	@$(CC) $(FLAGS) $(NAME) $(OBJECTS)
+
+clean:
+	@rm -rf *.o
+
+fclean: clean
+	@rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
