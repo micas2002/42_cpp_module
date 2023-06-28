@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:11:16 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/02 19:18:41 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:57:42 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 
 int	main(void)
 {
-	Zombie *horde;
+	Zombie *horde = zombieHorde(N, "Tyler");
 	int		i = -1;
 
-	horde = zombieHorde(N, "Tyler");
 	while (++i < N)
-		horde[i].annouce();
-	delete [] horde;
+		horde[i].announce();
+	delete[] horde;
 	return (0);
 }

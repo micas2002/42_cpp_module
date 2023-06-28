@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:17:09 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/13 10:27:43 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:55:09 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Zombie::~Zombie()
 	std::cout << "\e[0;33mDefault Destructor called of Zombie\e[0m" << std::endl;
 }
 
-void	Zombie::annouce(void)
+void	Zombie::announce(void)
 {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

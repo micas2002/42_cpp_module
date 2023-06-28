@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:11:55 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/02 19:07:09 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:55:05 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Zombie
 	public:
 		Zombie();
 		~Zombie();
-		void	annouce(void);
+		void	announce(void);
 		void	give_name(std::string name);
 };
 
