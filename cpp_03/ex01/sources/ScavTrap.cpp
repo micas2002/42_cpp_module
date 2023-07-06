@@ -6,16 +6,11 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:33:48 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/25 17:02:58 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:15:50 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-
-ScavTrap::ScavTrap()
-{
-	std::cout << "\e[0;33mDefault Constructor called of ScavTrap\e[0m" << std::endl;
-}
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 {
@@ -25,7 +20,7 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 	std::cout << "\e[0;33mConstructor called of ScavTrap\e[0m" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy)
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
 	*this = copy;
 }

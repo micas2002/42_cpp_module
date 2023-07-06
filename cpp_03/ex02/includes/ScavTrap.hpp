@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:33:50 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/25 16:30:32 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:24:29 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class ScavTrap : public ClapTrap
 	private:
 	
 	public:
-		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &copy);
 		~ScavTrap();
 		ScavTrap & operator = (const ScavTrap &assign);
+
 		void    attack(std::string const& target);
 		void	guardGate();
 };

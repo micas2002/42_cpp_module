@@ -6,31 +6,57 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 16:15:30 by mibernar          #+#    #+#              #
-#    Updated: 2023/01/23 17:06:16 by mibernar         ###   ########.fr        #
+#    Updated: 2023/07/06 15:42:49 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
-CC = c++ -g
+HEADERS_LIST = ClapTrap.hpp
+HEADERS_DIRECTORY = ./includes/
+HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g -o
+SOURCES_LIST = main.cpp ClapTrap.cpp
+SOURCES_DIRECTORY = ./sources/
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-FILES = main.cpp ClapTrap.cpp
+OBJECTS_LIST = $(patsubst %.cpp, %.o, $(SOURCES_LIST))
+OBJECTS_DIRECTORY = objects/
+OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
-OBJECTS = $(FILES:.cpp=.o)
+CC = g++
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-all:$(NAME)
+INCLUDES = -I $(HEADERS_DIRECTORY)
 
-$(NAME): $(OBJECTS)
-	@$(CC) $(FLAGS) $(NAME) $(OBJECTS)
+# RULES
 
-clean:
-	@rm -rf *.o
+all: ## Compiles the whole project
+	@make -s $(NAME)
 
-fclean: clean
-	@rm -rf $(NAME)
+$(NAME):$(OBJECTS_DIRECTORY) $(OBJECTS)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME)
 
-re: fclean all
+$(OBJECTS_DIRECTORY): ## Creates the objects directory
+	@mkdir -p $(OBJECTS_DIRECTORY)
 
-.PHONY: all clean fclean re
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.cpp ## Compiles each '*.cpp'
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+
+clean: ## Cleans all the '*.o' files and deletes the objects directory
+	@rm -rf $(OBJECTS_DIRECTORY)
+
+fclean: clean ## Calls clean and deletes all executables and compiled libs
+	@rm -f $(NAME)
+
+re: ## Deep cleans the project and recompiles it
+	@make -s fclean
+	@make -s all
+	
+help: ## Shows all the options and it's uses
+	@echo "usage: make [target]"
+	@echo ""
+	@egrep "^(.+)\:\ .*##\ (.+)" ${MAKEFILE_LIST} | sed 's/:.*##/#/' | column -t -c 2 -s '#'
+	@curl -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash
+
+.PHONY	: re fclean clean all
