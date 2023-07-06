@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:15:16 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/18 16:12:57 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:31:09 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Fixed::Fixed(const int number)
 Fixed::Fixed(const float number)
 {
 	std::cout << "\e[0;33mFloat Constructor called of Fixed\e[0m" << std::endl;
-	this->fixedPoint = std::roundf(number * (1 << fractBits));
+	this->fixedPoint = roundf(number * (1 << fractBits));
 }
 
 Fixed::Fixed(const Fixed &copy)
