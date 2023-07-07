@@ -6,14 +6,14 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:31:10 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 13:58:21 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:53:32 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include <iostream>
+# include <iostream>
 
 class Animal
 {
