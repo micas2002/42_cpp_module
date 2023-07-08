@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:47:32 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/07 15:33:37 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:46:47 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Dog::~Dog()
 
 Dog & Dog::operator=(const Dog &assign)
 {
-	this->type = assign.type;
+	if (this != &assign)
+		this->type = assign.type;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:47:25 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/07 15:33:22 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:46:38 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Cat::~Cat()
 
 Cat & Cat::operator=(const Cat &assign)
 {
-	this->type = assign.type;
+	if (this != &assign)
+		this->type = assign.type;
 	return (*this);
 }
 

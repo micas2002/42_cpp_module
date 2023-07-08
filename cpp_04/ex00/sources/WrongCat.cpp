@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:07:50 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/07 15:34:20 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:47:00 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ WrongCat::~WrongCat()
 
 WrongCat & WrongCat::operator=(const WrongCat &assign)
 {
-	this->type = assign.type;
+	if (this != &assign)
+		this->type = assign.type;
 	return (*this);
 }
 
-void    WrongCat::makeSound( void ) const
+void    WrongCat::makeSound() const
 {
     std::cout << "WrongAnimal sound\n";
 }

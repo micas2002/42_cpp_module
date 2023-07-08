@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:44:49 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 13:58:18 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:46:04 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ Animal::~Animal()
 
 Animal & Animal::operator=(const Animal &assign)
 {
-	this->type = assign.type;
+	if (this != &assign)
+		this->type = assign.type;
 	return (*this);
 }
 

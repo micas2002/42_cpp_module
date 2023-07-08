@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:36:35 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 13:59:16 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:42:02 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class	WrongAnimal
 		WrongAnimal(const WrongAnimal &copy);
 		virtual ~WrongAnimal();
 		WrongAnimal & operator = (const WrongAnimal &assign);
+
 		virtual void	makeSound() const;
 		std::string		getType() const;
 };

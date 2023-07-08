@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:36:33 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/07 15:34:08 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:46:54 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ WrongAnimal::~WrongAnimal()
 
 WrongAnimal & WrongAnimal::operator=(const WrongAnimal &assign)
 {
-	this->type = assign.type;
+	if (this != &assign)
+		this->type = assign.type;
 	return (*this);
 }
 
