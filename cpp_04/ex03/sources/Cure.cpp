@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:57:48 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/02 15:41:48 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:45:26 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Cure::Cure() : AMateria("cure")
 	std::cout << "\e[0;33mDefault Constructor called of Cure\e[0m" << std::endl;
 }
 
-Cure::Cure(const Cure &copy)
+Cure::Cure(const Cure &copy) : AMateria(copy)
 {
 	*this = copy;
 }

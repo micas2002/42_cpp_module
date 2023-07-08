@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:57:07 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/02 17:03:42 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:45:29 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Ice::Ice() : AMateria("ice")
 	std::cout << "\e[0;33mDefault Constructor called of Ice\e[0m" << std::endl;
 }
 
-Ice::Ice(const Ice &copy)
+Ice::Ice(const Ice &copy) : AMateria(copy)
 {
 	*this = copy;
 }

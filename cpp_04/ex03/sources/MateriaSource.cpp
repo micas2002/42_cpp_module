@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:16:23 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/03 15:46:36 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:50:21 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ MateriaSource::~MateriaSource()
 
 MateriaSource & MateriaSource::operator=(const MateriaSource &assign)
 {
+	if (this != &assign)
+	{
+		int	i = 0;
+
+		while (i < 4)
+            materias[i] = assign.materias[i];
+	}
 	return (*this);
 }
 
