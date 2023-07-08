@@ -6,7 +6,7 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 17:30:23 by mibernar          #+#    #+#              #
-#    Updated: 2023/07/08 11:55:13 by mibernar         ###   ########.fr        #
+#    Updated: 2023/07/08 12:50:49 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJECTS_DIRECTORY = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
 CC = g++
-FLAGS = -Wall -Werror -Wextra -g3
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 INCLUDES = -I $(HEADERS_DIRECTORY)
 
