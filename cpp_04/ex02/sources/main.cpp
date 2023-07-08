@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:30:31 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/31 10:05:48 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:18:04 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	main(void)
 {
-	//const Animal k;//class cant be instantiable.
-	//const Animal* l = new Animal();//class cant be instantiable.
+	// const Animal k;//class cant be instantiable.
+	// const Animal* l = new Animal();//class cant be instantiable.
 	const Animal* j = new Dog();
     const Animal* i = new Cat();
 	

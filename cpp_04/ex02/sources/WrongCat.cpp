@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:07:50 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 13:58:51 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:15:58 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ WrongCat::WrongCat() : WrongAnimal("WrongCat")
 	std::cout << "\e[0;33mDefault Constructor called of WrongCat\e[0m" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &copy)
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
 	*this = copy;
 }
