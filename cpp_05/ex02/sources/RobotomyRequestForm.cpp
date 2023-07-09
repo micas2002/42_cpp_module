@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:21:02 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 18:38:41 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:46:46 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 	std::cout << "\e[0;33mDefault Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy): AForm("ShrubberyCreationForm", 145, 137)
-	,target(target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy): AForm(copy), target(copy.target)
 {
 	*this = copy;
 }
@@ -31,6 +30,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &assign)
 {
+	if (this != &assign)
+		this->target = assign.target;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:20:46 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 17:14:14 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:46:27 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 	std::cout << "\e[0;33mDefault Constructor called of PresidentialPardonForm\e[0m" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy): AForm("ShrubberyCreationForm", 145, 137)
-	,target(target)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy): AForm(copy), target(copy.target)
 {
 	*this = copy;
 }
@@ -31,6 +30,8 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPardonForm &assign)
 {
+	if (this != &assign)
+		this->target = assign.target;
 	return (*this);
 }
 

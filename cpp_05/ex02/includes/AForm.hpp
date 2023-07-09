@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:06:13 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 18:24:20 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:16:18 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class	AForm
 {
 	private:
 		const std::string	name;
-		bool				isSigned;
 		int					signGrade;
 		const int			executeGrade;
+		bool				isSigned;
 	public:
 		AForm(const std::string& name, int signGrade, int executeGrade);
 		AForm(const AForm &copy);
