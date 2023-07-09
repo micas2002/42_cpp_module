@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:06:28 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/06 18:12:50 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/09 16:45:33 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,20 @@ int	main(void)
 
 	try
 	{
-		Bureaucrat *clair = new Bureaucrat("Clair", -1);
+		Bureaucrat *clair = new Bureaucrat("Clair", 0);
+		clair->decrementGrade();
+		std::cout << "Clair says hi!\n";	
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+	try
+	{
+		Bureaucrat *boris = new Bureaucrat("Clair", 151);
+		boris->decrementGrade();
 		std::cout << "Clair says hi!\n";	
 	}
 	catch (std::exception& e)
