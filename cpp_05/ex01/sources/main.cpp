@@ -6,11 +6,12 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:06:28 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/07 17:24:15 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:10:31 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
