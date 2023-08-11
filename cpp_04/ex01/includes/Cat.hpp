@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:34:57 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 18:03:02 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:57:29 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Cat : public Animal
 		Cat(const Cat &copy);
 		~Cat();
 		Cat & operator = (const Cat &assign);
+
 		void	makeSound() const;
-		Brain*	getBrain();
 };
 
 #endif

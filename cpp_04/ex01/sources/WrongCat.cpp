@@ -6,15 +6,16 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:07:50 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/08 12:55:09 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:20:58 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal("WrongCat")
+WrongCat::WrongCat()
 {
 	std::cout << "\e[0;33mDefault Constructor called of WrongCat\e[0m" << std::endl;
+	this->type = "WrongCat";
 }
 
 WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
@@ -29,11 +30,12 @@ WrongCat::~WrongCat()
 
 WrongCat & WrongCat::operator=(const WrongCat &assign)
 {
-	this->type = assign.type;
+	if (this != &assign)
+		this->type = assign.type;
 	return (*this);
 }
 
-void    WrongCat::makeSound( void ) const
+void    WrongCat::makeSound() const
 {
-    std::cout << "WrongAnimal sound\n";
+    std::cout << "WrongAnimal sound" << std::endl;
 }

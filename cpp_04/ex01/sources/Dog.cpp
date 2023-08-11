@@ -6,42 +6,41 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:47:32 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/08 12:54:57 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:14:50 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog()
 {
 	std::cout << "\e[0;33mDefault Constructor called of Dog\e[0m" << std::endl;
+	this->type = "Dog";
 	this->brain = new Brain();
 }
 
 Dog::Dog(const Dog &copy) : Animal(copy)
 {
-	*this = copy;
+	this->type = copy.type;
+	this->brain = new Brain(*(copy.brain));
 }
 
 Dog::~Dog()
 {
-	delete this->brain;
 	std::cout << "\e[0;31mDestructor called of Dog\e[0m" << std::endl;
+	delete this->brain;
 }
 
 Dog & Dog::operator=(const Dog &assign)
 {
-	this->type = assign.type;
-	*this->brain = *assign.brain;//deep copy
-	return (*this);
+	if (this->brain)
+        delete this->brain;
+    this->type = assign.type;
+    this->brain = new Brain(*(assign.brain));
+    return (*this);
 }
 
 void	Dog::makeSound() const
 {
-	std::cout << "Woof\n";
-}
-
-Brain*	Dog::getBrain()
-{
-	return (this->brain);
+	std::cout << "Woof" << std::endl;
 }

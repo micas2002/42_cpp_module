@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:08:02 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 13:58:54 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/07/08 12:42:08 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class WrongCat : public WrongAnimal
 		WrongCat(const WrongCat &copy);
 		~WrongCat();
 		WrongCat & operator = (const WrongCat &assign);
+
 		void	makeSound() const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:48:10 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/30 16:51:23 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:02:43 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 Brain::Brain()
 {
+	int	x = -1;
+
 	std::cout << "\e[0;33mDefault Constructor called of Brain\e[0m" << std::endl;
+	while (++x < 100)
+		this->ideas[x] = "ideas";
 }
 
 Brain::Brain(const Brain &copy)
@@ -38,3 +42,4 @@ Brain & Brain::operator=(const Brain &assign)
 	}
 	return (*this);
 }
+	
