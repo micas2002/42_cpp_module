@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:31:10 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/08 12:30:40 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:09:26 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Animal
 		std::string	type;
 	public:
 		Animal();
-		Animal(std::string type);
 		Animal(const Animal &copy);
 		virtual ~Animal();
 		Animal & operator = (const Animal &assign);

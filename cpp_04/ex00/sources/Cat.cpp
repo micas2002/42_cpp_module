@@ -6,15 +6,16 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:47:25 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/08 12:46:38 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:17:06 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat()
 {
 	std::cout << "\e[0;33mDefault Constructor called of Cat\e[0m" << std::endl;
+	this->type = "Cat";
 }
 
 Cat::Cat(const Cat &copy) : Animal(copy)
@@ -36,5 +37,5 @@ Cat & Cat::operator=(const Cat &assign)
 
 void	Cat::makeSound(void) const
 {
-	std::cout << "Meow\n";
+	std::cout << "Meow" << std::endl;
 }
