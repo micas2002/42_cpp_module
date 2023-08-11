@@ -6,15 +6,15 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:31:10 by mibernar          #+#    #+#             */
-/*   Updated: 2023/01/31 09:24:27 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:14:29 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include <iostream>
-#include "Brain.hpp"
+# include <iostream>
+# include "Brain.hpp"
 
 class Animal
 {
@@ -22,12 +22,12 @@ class Animal
 		std::string	type;
 	public:
 		Animal();
-		Animal(std::string type);
 		Animal(const Animal &copy);
 		virtual ~Animal();
 		Animal & operator = (const Animal &assign);
-		virtual void	makeSound() const;
-		virtual std::string		getType() const = 0;
+
+		virtual void			makeSound() const = 0;
+		std::string		getType() const;
 };
 
 #endif
