@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:07:50 by mibernar          #+#    #+#             */
-/*   Updated: 2023/08/11 13:20:58 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/08/16 15:39:24 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ WrongCat & WrongCat::operator=(const WrongCat &assign)
 
 void    WrongCat::makeSound() const
 {
-    std::cout << "WrongAnimal sound" << std::endl;
+    std::cout << "WrongCat sound" << std::endl;
 }
