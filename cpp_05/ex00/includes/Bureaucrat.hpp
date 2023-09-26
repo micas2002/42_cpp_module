@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:07:38 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 11:48:07 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:11:15 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class	Bureaucrat
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &copy);
 		~Bureaucrat();
+	
 		Bureaucrat & operator = (const Bureaucrat &assign);
 		
 		std::string	getName() const;
