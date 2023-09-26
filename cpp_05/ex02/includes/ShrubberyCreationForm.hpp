@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:43:12 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 17:28:11 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:28:34 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@
 #include <fstream>
 #include "AForm.hpp"
 
-class	ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
 	private:
 		std::string target;
+
 	public:
+		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 		~ShrubberyCreationForm();
+
 		ShrubberyCreationForm & operator = (const ShrubberyCreationForm &assign);
 
 		virtual void	execute(Bureaucrat const & executor) const;

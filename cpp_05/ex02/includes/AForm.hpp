@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:06:13 by mibernar          #+#    #+#             */
-/*   Updated: 2023/07/09 17:16:18 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:53:35 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,26 @@ class Bureaucrat;
 class	AForm
 {
 	private:
-		const std::string	name;
-		int					signGrade;
-		const int			executeGrade;
-		bool				isSigned;
+		const std::string	_name;
+		bool				_isSigned;
+		const int			_signGrade;
+		const int			_executeGrade;
+
 	public:
-		AForm(const std::string& name, int signGrade, int executeGrade);
+		AForm();
+		AForm(const std::string name, const int signGrade, const int executeGrade);
 		AForm(const AForm &copy);
 		virtual ~AForm();
+
 		AForm & operator = (const AForm &assign);
 		
-		std::string	getName() const;
-		virtual bool		getIsSigned() const;
-		int					getSignedGrade() const;
-		int					getExecuteGrade() const;
-		void				beSigned(const Bureaucrat& bureaucrat);
-		virtual void		execute(Bureaucrat const & executor) const = 0;
+		std::string		getName() const;
+		virtual bool	getIsSigned() const;
+		int				getSignedGrade() const;
+		int				getExecuteGrade() const;
+
+		void			beSigned(const Bureaucrat& bureaucrat);
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 		
 		class GradeTooHighException : public std::exception
 		{

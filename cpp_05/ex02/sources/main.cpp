@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:06:28 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 18:50:33 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:28:24 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 		std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
 		bureaucrat.signForm(form3);
 		bureaucrat.executeForm(form3);
+		std::cout << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -62,6 +63,7 @@ int	main(void)
 		std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
 		bureaucrat.signForm(form3);
 		bureaucrat.executeForm(form3);
+		std::cout << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -87,6 +89,7 @@ int	main(void)
 		std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
 		bureaucrat.signForm(form3);
 		bureaucrat.executeForm(form3);
+		std::cout << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -112,6 +115,7 @@ int	main(void)
 		std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
 		bureaucrat.signForm(form3);
 		bureaucrat.executeForm(form3);
+		std::cout << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -137,6 +141,7 @@ int	main(void)
 		std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
 		bureaucrat.signForm(form3);
 		bureaucrat.executeForm(form3);
+		std::cout << std::endl;
 	}
 	catch (std::exception &e)
 	{
