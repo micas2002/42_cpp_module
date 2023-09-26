@@ -6,23 +6,29 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:15:19 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:38:19 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:04:50 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
+Bureaucrat::Bureaucrat() : _name("Default Bureaucrat"), _grade(150)
 {
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
-	if (this->grade < 1)
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+{
+	std::cout << "\e[0;33mConstructor called of Bureaucrat\e[0m" << std::endl;
+	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (this->grade > 150)
+	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 {
+	std::cout << "\e[0;33mCopy Constructor called of Bureaucrat\e[0m" << std::endl;
 	*this = copy;
 }
 
@@ -33,32 +39,33 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign)
 {
-	this->grade = assign.grade;
+	std::cout << "\e[0;33mAssignation Operator called of Bureaucrat\e[0m" << std::endl;
+	this->_grade = assign._grade;
 	return (*this);
 }
 
 std::string	Bureaucrat::getName() const
 {
-	return (this->name);
+	return (this->_name);
 }
 
 int	Bureaucrat::getGrade() const
 {
-	return (this->grade);
+	return (this->_grade);
 }
 
 void	Bureaucrat::incrementGrade()
 {
-	if (this->grade <= 1)
+	if (this->_grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
-	this->grade -= 1;
+	this->_grade -= 1;
 }
 
 void	Bureaucrat::decrementGrade()
 {
-	if (this->grade >= 150)
+	if (this->_grade >= 150)
 		throw Bureaucrat::GradeTooLowException();
-	this->grade += 1;
+	this->_grade += 1;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
