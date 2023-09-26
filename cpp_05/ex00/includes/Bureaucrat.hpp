@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:07:38 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 12:11:15 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:22:31 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-class	Bureaucrat
+class Bureaucrat
 {
 	private:
 		std::string	const	_name;
@@ -31,6 +31,7 @@ class	Bureaucrat
 		
 		std::string	getName() const;
 		int			getGrade() const;
+
 		void		incrementGrade();
 		void		decrementGrade();
 		
