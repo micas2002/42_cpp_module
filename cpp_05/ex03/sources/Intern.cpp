@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:33:42 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 15:43:59 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:49:59 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ Intern::~Intern()
 Intern & Intern::operator=(const Intern &assign)
 {
 	std::cout << "\e[0;33mAssignation Operator called of Intern\e[0m" << std::endl;
+	if (this != &assign)
+		(void)assign;
 	return (*this);
 }
 

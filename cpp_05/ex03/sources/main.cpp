@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:06:28 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/09 16:35:36 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:55:31 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,32 @@ int	main(void)
 		Intern  someRandomIntern;
 		AForm*   rrf;
 
-		//rrf = someRandomIntern.makeForm("robotomy", "Bender");
-		//rrf = someRandomIntern.makeForm("plane request", "Bender");
-		//rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		//rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		delete rrf;
+	}
+	
+	{
+		Intern  someRandomIntern;
+		AForm*   rrf;
+
+		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+		delete rrf;
+	}
+	
+	{
+		Intern  someRandomIntern;
+		AForm*   rrf;
+
 		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+		delete rrf;
+	}
+	
+	{
+		Intern  someRandomIntern;
+		AForm*   rrf;
+
+		rrf = someRandomIntern.makeForm("robotomy", "Bender");
+		rrf = someRandomIntern.makeForm("plane request", "Bender");
 		delete rrf;
 	}
 
