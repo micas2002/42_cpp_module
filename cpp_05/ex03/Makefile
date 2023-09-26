@@ -6,32 +6,59 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:05:56 by mibernar          #+#    #+#              #
-#    Updated: 2023/02/09 13:06:09 by mibernar         ###   ########.fr        #
+#    Updated: 2023/09/26 15:35:12 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex03
 
-CC = c++ -g
+HEADERS_LIST = AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp \
+	Inter.hpp
+HEADERS_DIRECTORY = ./includes/
+HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g -o
-
-FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp \
+SOURCES_LIST = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp Intern.cpp
+SOURCES_DIRECTORY = ./sources/
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-OBJECTS = $(FILES:.cpp=.o)
+OBJECTS_LIST = $(patsubst %.cpp, %.o, $(SOURCES_LIST))
+OBJECTS_DIRECTORY = objects/
+OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
-all:$(NAME)
+CC = g++
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-$(NAME): $(OBJECTS)
-	@$(CC) $(FLAGS) $(NAME) $(OBJECTS)
+INCLUDES = -I $(HEADERS_DIRECTORY)
 
-clean:
-	@rm -rf *.o
+# RULES
 
-fclean: clean
-	@rm -rf $(NAME)
+all: ## Compiles the whole project
+	@make -s $(NAME)
 
-re: fclean all
+$(NAME):$(OBJECTS_DIRECTORY) $(OBJECTS)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME)
 
-.PHONY: all clean fclean re
+$(OBJECTS_DIRECTORY): ## Creates the objects directory
+	@mkdir -p $(OBJECTS_DIRECTORY)
+
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.cpp ## Compiles each '*.cpp'
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+
+clean: ## Cleans all the '*.o' files and deletes the objects directory
+	@rm -rf $(OBJECTS_DIRECTORY)
+
+fclean: clean ## Calls clean and deletes all executables and compiled libs
+	@rm -f $(NAME)
+
+re: ## Deep cleans the project and recompiles it
+	@make -s fclean
+	@make -s all
+	
+help: ## Shows all the options and it's uses
+	@echo "usage: make [target]"
+	@echo ""
+	@egrep "^(.+)\:\ .*##\ (.+)" ${MAKEFILE_LIST} | sed 's/:.*##/#/' | column -t -c 2 -s '#'
+	@curl -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash
+
+.PHONY	: re fclean clean all

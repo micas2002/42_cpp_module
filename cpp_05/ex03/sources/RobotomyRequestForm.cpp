@@ -6,20 +6,26 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:21:02 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 18:38:41 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:40:42 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45)
-	,target(target)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
+	, target("target")
 {
 	std::cout << "\e[0;33mDefault Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy): AForm("ShrubberyCreationForm", 145, 137)
-	,target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45)
+	, target(target)
+{
+	std::cout << "\e[0;33mConstructor called of RobotomyRequestForm\e[0m" << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy): AForm(copy)
+	, target(copy.target)
 {
 	*this = copy;
 }
@@ -31,6 +37,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &assign)
 {
+	if (this != &assign)
+		this->target = assign.target;
 	return (*this);
 }
 
@@ -44,11 +52,11 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	{
 		if (i % 2 == 0)
 		{
-			std::cout << "*LOUD DRILLING NOISES*\n" << executor.getName()
-				<< " has been robotomized successfully.\n";
+			std::cout << "*LOUD DRILLING NOISES*" <<  std::endl << executor.getName()
+				<< " has been robotomized successfully." << std::endl;
 		}
 		else
-			std::cout << "robotomy has failed failed\n";
+			std::cout << "robotomy has failed failed" << std::endl;
 		i++;
 	}
 }

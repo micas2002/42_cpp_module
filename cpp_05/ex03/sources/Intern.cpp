@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:33:42 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/09 16:26:59 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:43:59 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Intern::Intern()
 
 Intern::Intern(const Intern &copy)
 {
+	std::cout << "\e[0;33mCopy Constructor called of Intern\e[0m" << std::endl;
 	*this = copy;
 }
 
@@ -29,15 +30,16 @@ Intern::~Intern()
 
 Intern & Intern::operator=(const Intern &assign)
 {
+	std::cout << "\e[0;33mAssignation Operator called of Intern\e[0m" << std::endl;
 	return (*this);
 }
 
 AForm*	Intern::makeForm(std::string formName, std::string target)
 {
-	int		i = 0;
 	std::string	formsTypes[3] = {"robotomy request", "presidential pardon"
 		, "shrubbery creation"};
 	AForm*	form;
+	int		i = 0;
 
 	while (i < 3)
 	{

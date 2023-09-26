@@ -6,21 +6,28 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:21:16 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 18:37:08 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:07:44 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
-	,target(target)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
+	,target("target")
 {
 	std::cout << "\e[0;33mDefault Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy): AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
 	,target(target)
 {
+	std::cout << "\e[0;33mConstructor called of ShrubberyCreationForm\e[0m" << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy): AForm(copy)
+	, target(copy.target)
+{
+	std::cout << "\e[0;33mCopy Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 	*this = copy;
 }
 
@@ -31,16 +38,21 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm &assign)
 {
+	std::cout << "\e[0;33mAssignation Operator called of ShrubberyCreationForm\e[0m"
+		<< std::endl;
+	if (this != &assign)
+		this->target = assign.target;
 	return (*this);
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	std::ofstream file(executor.getName() + "_shrubbery");
+	std::ofstream file((executor.getName() + "_shrubbery").c_str());
 
 	if (executor.getGrade() > this->getExecuteGrade())
 		throw Bureaucrat::GradeTooLowException();
 	else
+	{
 		file <<	"		            .        +          .      ." << std::endl;
 		file <<	"     .            _        .                    ." << std::endl;
 		file <<	"  ,              /;-._,-.____        ,-----.__" << std::endl;
@@ -66,4 +78,5 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		file <<	"               )  ___/#/::`/ (O ==._____   O, (O  /`" << std::endl;
 		file <<	"          ~~~w/w~'~~,/` `:/,-(~`'~~~~~~~~'~o~/~/~w|/~" << std::endl;
 		file <<	"   ~~~~~~~~~~~~~~~~~~~~~~~//W~~~~~~~~~~~~/|/~~" << std::endl;
+	}
 }

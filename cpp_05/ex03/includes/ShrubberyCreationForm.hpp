@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:42:59 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/08 16:54:34 by mibernar         ###   ########.fr       */
+/*   Created: 2023/02/07 17:43:12 by mibernar          #+#    #+#             */
+/*   Updated: 2023/09/26 14:28:34 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PRESIDENTIAL_PARDON_FORM_HPP
-# define PRESIDENTIAL_PARDON_FORM_HPP
+#ifndef	SHRUBBERY_CREATION_FORM_HPP
+# define SHRUBBERY_CREATION_FORM_HPP
 
 #include <iostream>
+#include <fstream>
 #include "AForm.hpp"
 
-class	PresidentialPardonForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
 	private:
 		std::string target;
+
 	public:
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(const PresidentialPardonForm &copy);
-		~PresidentialPardonForm();
-		PresidentialPardonForm & operator = (const PresidentialPardonForm &assign);
-		
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
+		~ShrubberyCreationForm();
+
+		ShrubberyCreationForm & operator = (const ShrubberyCreationForm &assign);
+
 		virtual void	execute(Bureaucrat const & executor) const;
 };
 

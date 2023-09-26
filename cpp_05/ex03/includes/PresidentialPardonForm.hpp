@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 12:20:11 by mibernar          #+#    #+#             */
-/*   Updated: 2023/02/09 13:00:57 by mibernar         ###   ########.fr       */
+/*   Created: 2023/02/07 17:42:59 by mibernar          #+#    #+#             */
+/*   Updated: 2023/09/26 14:41:18 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERN_HPP
-# define INTERN_HPP
+#ifndef	PRESIDENTIAL_PARDON_FORM_HPP
+# define PRESIDENTIAL_PARDON_FORM_HPP
 
 #include <iostream>
 #include "AForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
 
-class	Intern
+class PresidentialPardonForm : public AForm
 {
+	private:
+		std::string target;
+
 	public:
-		Intern();
-		Intern(const Intern &copy);
-		~Intern();
-		Intern & operator = (const Intern &assign);
+		PresidentialPardonForm();
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm &copy);
+		~PresidentialPardonForm();
+
+		PresidentialPardonForm & operator = (const PresidentialPardonForm &assign);
 		
-		AForm*	makeForm(std::string formName, std::string target);
+		virtual void	execute(Bureaucrat const & executor) const;
 };
 
 #endif
