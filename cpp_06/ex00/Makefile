@@ -6,17 +6,17 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:05:56 by mibernar          #+#    #+#              #
-#    Updated: 2023/09/26 16:03:25 by mibernar         ###   ########.fr        #
+#    Updated: 2023/09/27 17:14:01 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
-HEADERS_LIST = 
+HEADERS_LIST = ScalarConverter.hpp
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SOURCES_LIST = 
+SOURCES_LIST = main.cpp ScalarConverter.cpp
 SOURCES_DIRECTORY = ./sources/
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
