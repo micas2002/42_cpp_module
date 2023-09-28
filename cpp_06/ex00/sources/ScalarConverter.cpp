@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:46:46 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/27 17:35:23 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:27:14 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,88 +41,165 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &assign)
 
 void	ScalarConverter::convert(std::string literal)
 {
+	char	c;
+	int		i;
+	float	f;
+	double	d;
+
 	switch (getDataType(literal))
 	{
 		case 1:
-			fromInt(literal);
+			i = fromInt(literal);
+			printValues(i);
 			break ;
 		case 2:
-			fromFloat(literal);
+			f = fromFloat(literal);
+			printValues(f);
 			break ;
 		case 3:
-			fromDouble(literal);
+			d = fromDouble(literal);
+			printValues(d);
 			break ;
 		case 4:
-			fromChar(literal);
+			c = fromChar(literal);
+			printValues(c);
 			break ;
-		// case 5:
-		// 	invalidInput();
+		case 5:
+			std::cout << "Invalid input" << std::endl;
 			break ;
 	}
 }
 
 int ScalarConverter::getDataType(std::string literal)
 {
-	if ((int)literal.find_first_not_of("0123456789") == -1)
+	if ((int)literal.find_first_not_of("-0123456789") == -1)
 		return (1);
-	else if ((int)literal.find_first_not_of("0123456789.f") == -1 
-		&& literal.find(".") == literal.find_last_of("."))
+	else if (floatPseudoLiterals(literal) || doublePseudoLiterals(literal)
+		|| ((int)literal.find_first_not_of("-0123456789.f") == -1 
+		&& literal.find(".") == literal.find_last_of(".")))
 	{
-		if (literal.find("f") == literal.find_last_of("f"))
+		if (floatPseudoLiterals(literal) || literal.find("f") == literal.find_last_of("f"))
 			return (2);
-		else if ((int)literal.find("f") == -1)
+		else if (doublePseudoLiterals(literal) || (int)literal.find("f") == -1)
 			return (3);
 	}
-	else if (literal.size() == 1 && isprint(literal[0]) == 1)
+	else if (literal.size() == 1 && isprint(literal[0]) != 0)
 		return (4);
 	return (5);
-	printValues();
 }
 
-void ScalarConverter::fromInt(std::string literal)
+int	ScalarConverter::floatPseudoLiterals(std::string literal)
 {
-	_i = atoi(literal.c_str());
+	if (literal.compare("nanf") == 0 || literal.compare("-inff") == 0
+		|| literal.compare("+inff") == 0)
+		return (1);
+	return (0);
 }
 
-void ScalarConverter::fromFloat(std::string literal)
+int	ScalarConverter::doublePseudoLiterals(std::string literal)
 {
-	_f = strtof(literal.c_str(), NULL);
+	if (literal.compare("nan") == 0|| literal.compare("-inf") == 0
+		|| literal.compare("+inf") == 0)
+		return (1);
+	return (0);
 }
 
-void ScalarConverter::fromDouble(std::string literal)
+int ScalarConverter::fromInt(std::string literal)
 {
-	_d = strtod(literal.c_str(), NULL);
+	return(atoi(literal.c_str()));
 }
 
-void ScalarConverter::fromChar(std::string literal)
+float ScalarConverter::fromFloat(std::string literal)
 {
-	_c = literal[0];
+	return(strtof(literal.c_str(), NULL));
 }
 
-void ScalarConverter::printValues()
+double ScalarConverter::fromDouble(std::string literal)
 {
-	std::cout << "char: " << std::to_string(_c) << std::endl;
-	std::cout << "int: " << std::to_string(_i) << std::endl;
-	std::cout << "float: " << std::to_string(_f) + "f" << std::endl;
-	std::cout << "double: " << std::to_string(_d) << std::endl;
+	return((literal.c_str(), NULL));
 }
 
-// static int ScalarConverter::getInt()
-// {
-// 	return (this->_i);
-// }
+char ScalarConverter::fromChar(std::string literal)
+{
+	return (literal[0]);
+}
 
-// static int ScalarConverter::getFloat()
-// {
-// 	return (this->_f);
-// }
+void ScalarConverter::printValues(char c)
+{
+	printChar(c);
+	printInt(static_cast<int>(c));
+	printFloat(static_cast<float>(c));
+	printDouble(static_cast<double>(c));
+}
 
-// static int ScalarConverter::getDouble()
-// {
-// 	return (this->_d);
-// }
+void ScalarConverter::printValues(int i)
+{
+	if (i < std::numeric_limits<char>::min() || i > std::numeric_limits<char>::max())
+		std::cout << "Char: impossible" << std::endl;
+	else
+		printChar(static_cast<char>(i));
+	printInt(i);
+	printFloat(static_cast<float>(i));
+	printDouble(static_cast<double>(i));
+}
 
-// static int ScalarConverter::getChar()
-// {
-// 	return (this->_c);
-// }
+void ScalarConverter::printValues(float f)
+{
+	if (f < std::numeric_limits<char>::min() || f > std::numeric_limits<char>::max()
+		|| f != f)
+		std::cout << "Char: impossible" << std::endl;
+	else
+		printChar(static_cast<char>(f));
+	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max()
+		|| f != f)
+		std::cout << "Int: impossible" << std::endl;
+	else
+		printInt(static_cast<int>(f));
+	printFloat(f);
+	printDouble(static_cast<double>(f));
+}
+
+void ScalarConverter::printValues(double d)
+{
+	if (d < std::numeric_limits<char>::min() || d > std::numeric_limits<char>::max()
+		|| d != d)
+		std::cout << "Char: impossible" << std::endl;
+	else
+		printChar(static_cast<char>(d));
+	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max()
+		|| d != d)
+		std::cout << "Int: impossible" << std::endl;
+	else
+		printInt(static_cast<int>(d));
+	if (d < std::numeric_limits<float>::min() || d > std::numeric_limits<float>::max()
+		|| d != d)
+		std::cout << "Float: impossible" << std::endl;
+	else
+		printFloat(static_cast<float>(d));
+	printDouble(d);
+}
+
+void ScalarConverter::printChar(char c)
+{
+	if (std::isprint(c))
+		std::cout << "char: " << c << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl; 
+}
+
+void ScalarConverter::printInt(int i)
+{
+	std::cout << "Int: " << i << std::endl;
+}
+
+void ScalarConverter::printFloat(float f)
+{
+	std::cout << "Float: " << std::fixed << std::setprecision( 1 ) << f << "f"
+		<< std::endl;
+}
+
+void ScalarConverter::printDouble(double d)
+{
+	std::cout << "Double: " << std::fixed << std::setprecision( 1 ) << d
+		<< std::endl;
+}
