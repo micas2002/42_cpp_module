@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 18:34:04 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/28 19:25:33 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:43:23 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Serializer::~Serializer()
 
 Serializer & Serializer::operator=(const Serializer &assign)
 {
-	std::cout << "\e[0;33mAssignation Operator called of Bureaucrat\e[0m"
+	std::cout << "\e[0;33mAssignation Operator called of Serializer\e[0m"
 		<< std::endl;
 	if (this != &assign)
 		(void)assign;

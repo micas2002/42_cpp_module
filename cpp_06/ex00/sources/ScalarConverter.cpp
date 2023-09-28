@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:46:46 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/28 18:27:14 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:43:35 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ ScalarConverter::~ScalarConverter()
 
 ScalarConverter & ScalarConverter::operator=(const ScalarConverter &assign)
 {
-	std::cout << "\e[0;33mAssignation Operator called of Bureaucrat\e[0m"
+	std::cout << "\e[0;33mAssignation Operator called of Serializer\e[0m"
 		<< std::endl;
 	if (this != &assign)
 		(void)assign;
