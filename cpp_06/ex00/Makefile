@@ -6,11 +6,11 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:05:56 by mibernar          #+#    #+#              #
-#    Updated: 2023/09/27 17:14:01 by mibernar         ###   ########.fr        #
+#    Updated: 2023/09/29 13:32:34 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = convert
 
 HEADERS_LIST = ScalarConverter.hpp
 HEADERS_DIRECTORY = ./includes/

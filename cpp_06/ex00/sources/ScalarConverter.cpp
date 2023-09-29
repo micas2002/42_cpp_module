@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:46:46 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/28 19:43:35 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:53:52 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,21 @@ void	ScalarConverter::convert(std::string literal)
 	switch (getDataType(literal))
 	{
 		case 1:
-			i = fromInt(literal);
-			printValues(i);
+			c = literal[0];
+			printValues(c);
 			break ;
 		case 2:
-			f = fromFloat(literal);
-			printValues(f);
+			i = atoi(literal.c_str());
+			printValues(i);
 			break ;
 		case 3:
-			d = fromDouble(literal);
-			printValues(d);
+			literal.resize(literal.size() - 1);
+			f = strtof(literal.c_str(), NULL);
+			printValues(f);
 			break ;
 		case 4:
-			c = fromChar(literal);
-			printValues(c);
+			d = strtod(literal.c_str(), NULL);
+			printValues(d);
 			break ;
 		case 5:
 			std::cout << "Invalid input" << std::endl;
@@ -72,20 +73,56 @@ void	ScalarConverter::convert(std::string literal)
 
 int ScalarConverter::getDataType(std::string literal)
 {
-	if ((int)literal.find_first_not_of("-0123456789") == -1)
+	if (isChar(literal))
 		return (1);
-	else if (floatPseudoLiterals(literal) || doublePseudoLiterals(literal)
-		|| ((int)literal.find_first_not_of("-0123456789.f") == -1 
-		&& literal.find(".") == literal.find_last_of(".")))
-	{
-		if (floatPseudoLiterals(literal) || literal.find("f") == literal.find_last_of("f"))
-			return (2);
-		else if (doublePseudoLiterals(literal) || (int)literal.find("f") == -1)
-			return (3);
-	}
-	else if (literal.size() == 1 && isprint(literal[0]) != 0)
+	if (isInt(literal))
+		return (2);
+	if (isFloat(literal))
+		return (3);
+	if (isDouble(literal))
 		return (4);
 	return (5);
+}
+
+int	ScalarConverter::isChar(std::string literal)
+{
+	if (literal.size() == 1 && isprint(literal[0]) != 0
+		&& isdigit(literal[0]) == 0)
+		return (1);
+	return (0);
+}
+
+int	ScalarConverter::isInt(std::string literal)
+{
+	long n = strtol(literal.c_str(), NULL, 10);
+
+	if ((int)literal.find_first_not_of("-0123456789") == -1
+		&& (n >= std::numeric_limits<int>::min() && n <= std::numeric_limits<int>::max()))
+		return (1);
+	return (0);
+}
+
+int	ScalarConverter::isFloat(std::string literal)
+{
+	if ((int)literal.find_last_of(".") != -1 && (int)literal.find_last_of("f") != -1)
+	{
+		if (floatPseudoLiterals(literal) || ((int)literal.find_first_not_of("-0123456789.f") == -1
+			&& literal.find(".") == literal.find_last_of(".")
+			&& literal.find("f") == literal.find_last_of("f")))
+			return (1);
+	}
+	return (0);
+}
+
+int	ScalarConverter::isDouble(std::string literal)
+{
+	if ((	int)literal.find_last_of(".") != -1)
+	{
+		if (doublePseudoLiterals(literal) || ((int)literal.find_first_not_of("-0123456789.") == -1
+		&& literal.find(".") == literal.find_last_of(".")))
+		return (1);
+	}
+	return (0);
 }
 
 int	ScalarConverter::floatPseudoLiterals(std::string literal)
@@ -104,25 +141,6 @@ int	ScalarConverter::doublePseudoLiterals(std::string literal)
 	return (0);
 }
 
-int ScalarConverter::fromInt(std::string literal)
-{
-	return(atoi(literal.c_str()));
-}
-
-float ScalarConverter::fromFloat(std::string literal)
-{
-	return(strtof(literal.c_str(), NULL));
-}
-
-double ScalarConverter::fromDouble(std::string literal)
-{
-	return((literal.c_str(), NULL));
-}
-
-char ScalarConverter::fromChar(std::string literal)
-{
-	return (literal[0]);
-}
 
 void ScalarConverter::printValues(char c)
 {
