@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:46:46 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/29 14:53:52 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:07:42 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void ScalarConverter::printValues(char c)
 
 void ScalarConverter::printValues(int i)
 {
-	if (i < std::numeric_limits<char>::min() || i > std::numeric_limits<char>::max())
+	if (i <= std::numeric_limits<char>::min() || i >= std::numeric_limits<char>::max())
 		std::cout << "Char: impossible" << std::endl;
 	else
 		printChar(static_cast<char>(i));
@@ -163,12 +163,12 @@ void ScalarConverter::printValues(int i)
 
 void ScalarConverter::printValues(float f)
 {
-	if (f < std::numeric_limits<char>::min() || f > std::numeric_limits<char>::max()
+	if (f <= std::numeric_limits<char>::min() || f >= std::numeric_limits<char>::max()
 		|| f != f)
 		std::cout << "Char: impossible" << std::endl;
 	else
 		printChar(static_cast<char>(f));
-	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max()
+	if (f <= std::numeric_limits<int>::min() || f >= std::numeric_limits<int>::max()
 		|| f != f)
 		std::cout << "Int: impossible" << std::endl;
 	else
@@ -179,17 +179,17 @@ void ScalarConverter::printValues(float f)
 
 void ScalarConverter::printValues(double d)
 {
-	if (d < std::numeric_limits<char>::min() || d > std::numeric_limits<char>::max()
+	if (d <= std::numeric_limits<char>::min() || d >= std::numeric_limits<char>::max()
 		|| d != d)
 		std::cout << "Char: impossible" << std::endl;
 	else
 		printChar(static_cast<char>(d));
-	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max()
+	if (d <= std::numeric_limits<int>::min() || d >= std::numeric_limits<int>::max()
 		|| d != d)
 		std::cout << "Int: impossible" << std::endl;
 	else
 		printInt(static_cast<int>(d));
-	if (d < std::numeric_limits<float>::min() || d > std::numeric_limits<float>::max()
+	if (d <= std::numeric_limits<float>::min() || d >= std::numeric_limits<float>::max()
 		|| d != d)
 		std::cout << "Float: impossible" << std::endl;
 	else
