@@ -6,17 +6,17 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:05:56 by mibernar          #+#    #+#              #
-#    Updated: 2023/09/29 16:57:56 by mibernar         ###   ########.fr        #
+#    Updated: 2023/10/01 13:06:44 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
-HEADERS_LIST = 
+HEADERS_LIST = whatever.hpp
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SOURCES_LIST = 
+SOURCES_LIST = main.cpp
 SOURCES_DIRECTORY = ./sources/
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
