@@ -6,11 +6,12 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:13:43 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/29 16:52:08 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:26:53 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 
 #include "Base.hpp"
 #include "A.hpp"
@@ -70,9 +71,8 @@ void	identify(Base* p)
 Base * generate(void)
 {
 	Base*	base = NULL;
-	static int	i = 0;
 
-	switch (i % 3)
+	switch (std::rand() % 3)
 	{
 		case 0:
 			base = new A();
@@ -84,12 +84,12 @@ Base * generate(void)
 			base = new C();
 			break ;
 	}
-	i++;
 	return (base);
 }
 
 int	main()
 {
+	srand(time(NULL));
 	Base*	ptr;
 
 	ptr = generate();
