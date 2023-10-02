@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:06:04 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/02 19:23:10 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/02 20:56:19 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ template <class T>
 class Array
 {
 	private:
-		unsigned int	_n;
 		T*				_array;
+		unsigned int	_n;
 
 	public:
-		Array() : _array(new T[])
+		Array() : _array(new T())
 		{
 			std::cout << "\e[0;33mDefault Constructor called of Array\e[0m" << std::endl;
 		};
 
-		Array(unsigned int n) : _array(new T[n])
+		Array(unsigned int n) : _array(new T[n]), _n(n)
 		{
-			std::cout << "\e[0;33mConstructor called of Array\e[0m" << std::endl
+			std::cout << "\e[0;33mConstructor called of Array\e[0m" << std::endl;
 		};
 
 		Array(const Array &copy)
 		{
 			std::cout << "\e[0;33mCopy Constructor called of Array\e[0m" << std::endl;
-			for (int i = 0; i < _n, i++)
+			for (int i = 0; i < _n; i++)
 				_array[i] = copy._array[i];
 		};
 
@@ -49,12 +49,33 @@ class Array
 			if (this != &assign)
 			{
 				if (_array)
-					delete [] array;
+					delete [] _array;
 				_n = assign._n;
-				_array = new T[_size];
-				for (int i = 0; i < _size; i++)
+				_array = new T[_n];
+				for (unsigned int i = 0; i < _n; i++)
 					_array[i] = assign._array[i];
 			}
 			return (*this);
+		};
+
+		T & operator [] (unsigned int index) const
+		{
+			if (index > _n - 1)
+				throw Array::IndexOutOfBoundsException();
+			else
+				return(_array[index]);
+		}
+
+		unsigned int	size(void)
+		{
+			return (_n);
+		};
+
+		class IndexOutOfBoundsException : public std::exception
+		{
+			public: virtual const char* what() const throw()
+			{
+				return ("Index Exception: index out of bounds\n");
+			};
 		};
 };
