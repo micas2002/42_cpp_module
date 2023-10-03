@@ -6,13 +6,13 @@
 #    By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:05:56 by mibernar          #+#    #+#              #
-#    Updated: 2023/10/02 17:03:22 by mibernar         ###   ########.fr        #
+#    Updated: 2023/10/03 13:58:43 by mibernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex02
 
-HEADERS_LIST = 
+HEADERS_LIST = Array.hpp
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
