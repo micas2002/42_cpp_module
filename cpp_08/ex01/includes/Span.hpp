@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:41:14 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 16:43:22 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:32:52 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ class Span
 		int		longestSpan();
 		int		shortestSpan();
 
+		class insufficientNumbersException : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
 };
 
 #endif
