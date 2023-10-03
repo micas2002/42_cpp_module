@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:41:14 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 17:32:52 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:05:08 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Span
 {
 	private:
-		unsigned int	_n;
+		unsigned int	_maxSize;
 		std::list<int>	_list;
 
 	public:
@@ -36,6 +36,11 @@ class Span
 		int		shortestSpan();
 
 		class insufficientNumbersException : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
+		
+		class listIsFull : public std::exception
 		{
 			public: virtual const char* what() const throw();
 		};
