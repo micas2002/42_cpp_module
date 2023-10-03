@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:06:04 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/02 20:56:19 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:52:30 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Array
 		unsigned int	_n;
 
 	public:
-		Array() : _array(new T())
+		Array() : _array(new T()), _n(0)
 		{
 			std::cout << "\e[0;33mDefault Constructor called of Array\e[0m" << std::endl;
 		};
@@ -30,7 +30,7 @@ class Array
 			std::cout << "\e[0;33mConstructor called of Array\e[0m" << std::endl;
 		};
 
-		Array(const Array &copy)
+		Array(const Array &copy) : _array(copy._array), _n(copy._n)
 		{
 			std::cout << "\e[0;33mCopy Constructor called of Array\e[0m" << std::endl;
 			for (int i = 0; i < _n; i++)
@@ -40,7 +40,10 @@ class Array
 		~Array()
 		{
 			std::cout << "\e[0;31mDestructor called of Array\e[0m" << std::endl;
-			delete [] _array;
+			if (_n == 0)
+				delete _array;
+			else
+				delete [] _array;
 		};
 
 		Array & operator = (const Array &assign)
@@ -48,7 +51,9 @@ class Array
 			std::cout << "\e[0;33mAssignation Operator called of Array\e[0m" << std::endl;
 			if (this != &assign)
 			{
-				if (_array)
+				if (_n == 0)
+					delete _array;
+				else
 					delete [] _array;
 				_n = assign._n;
 				_array = new T[_n];
@@ -60,7 +65,7 @@ class Array
 
 		T & operator [] (unsigned int index) const
 		{
-			if (index > _n - 1)
+			if (index >= _n)
 				throw Array::IndexOutOfBoundsException();
 			else
 				return(_array[index]);

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:05:42 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/02 21:05:25 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:50:29 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
+
 	std::cout << std::endl;
 
 	Array<char>	charArray(11);
@@ -66,5 +66,33 @@ int	main()
 	
 	std::cout << std::endl;
 	
+	Array<double>	doubleArray;
+	
+	try
+	{
+		std::cout << "size of doubleArray: " << doubleArray.size() << std::endl;
+		std::cout << doubleArray[1] <<  std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	Array<int>	a(3);
+	Array<int>	b(3);
+	
+	for (int i = 0; i < 3; i++)
+		a[i] = i;
+
+	b = a;
+
+	for ( unsigned int i = 0; i < a.size(); i++ ) {
+		a[i] = i * 2;
+		std::cout << "On a: " << a[i];
+		std::cout << " and on testInt2: " << b[i] << std::endl;
+	}
+
 	return(0);
 }
