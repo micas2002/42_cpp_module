@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:00:21 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 18:06:08 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:04:53 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Span::Span() : _maxSize(5)
 	std::cout << "\e[0;33mDefault Constructor called of Span\e[0m" << std::endl;
 }
 
-Span::Span(unsigned int n) : _maxSize(n)
+Span::Span(unsigned int n) : _maxSize(n), _list()
 {
 	std::cout << "\e[0;33mConstructor called of Span\e[0m" << std::endl;
 }
@@ -70,7 +70,7 @@ int	Span::shortestSpan()
 	std::list<int>::iterator	iter2 = ++_list.begin();
 	int							shortestSpan = -1;
 	int							difference;
-
+	
 	_list.sort();
 	
 	while (iter2 != _list.end())
@@ -82,6 +82,17 @@ int	Span::shortestSpan()
 		iter2++;
 	}
 	return (shortestSpan);
+}
+
+void	Span::fillList(unsigned int rangeEnd)
+{
+	srand(time(NULL));
+	
+	for (unsigned int i = 0; i < rangeEnd; i++)
+	{
+		// this->addNumber(i); // test with numbers with incrementation of 1 
+		this->addNumber(std::rand() % 100000);
+	}
 }
 
 const char* Span::insufficientNumbersException::what() const throw()

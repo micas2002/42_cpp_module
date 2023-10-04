@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:41:14 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 18:05:08 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:02:34 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <algorithm>
 #include <list>
+#include <ctime>
+#include <cstdlib>
 
 class Span
 {
@@ -34,6 +36,8 @@ class Span
 		void	addNumber(int newNumber);
 		int		longestSpan();
 		int		shortestSpan();
+		
+		void	fillList(unsigned int range);
 
 		class insufficientNumbersException : public std::exception
 		{
