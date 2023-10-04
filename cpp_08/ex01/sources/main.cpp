@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:04:37 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:56:21 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:07:30 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,54 @@
 
 int	main()
 {
-	// try
-	// {
-	// 	Span sp = Span(5);
+	try
+	{
+		Span sp = Span(5);
 
-	// 	sp.addNumber(6);
-	// 	sp.addNumber(3);
-	// 	sp.addNumber(17);
-	// 	sp.addNumber(9);
-	// 	sp.addNumber(11);
-	// 	std::cout << sp.shortestSpan() << std::endl;
-	// 	std::cout << sp.longestSpan() << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
-	// std::cout << std::endl;
+	std::cout << std::endl;
 	
-	// try
-	// {
-	// 	Span sp = Span(2);
+	try
+	{
+		Span sp = Span(2);
 
-	// 	sp.addNumber(6);
-	// 	sp.addNumber(3);
-	// 	sp.addNumber(17);
-	// 	sp.addNumber(9);
-	// 	sp.addNumber(11);
-	// 	std::cout << sp.shortestSpan() << std::endl;
-	// 	std::cout << sp.longestSpan() << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	
-	// try
-	// {
-	// 	Span sp = Span(10000);
+	try
+	{
+		Span sp = Span(10000);
 
-	// 	sp.fillList(100000);
-	// 	std::cout << sp.shortestSpan() << std::endl;
-	// 	std::cout << sp.longestSpan() << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
+		sp.fillList(100000);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	
 	try
 	{
@@ -77,7 +77,6 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
 	
 	return (0);
 }

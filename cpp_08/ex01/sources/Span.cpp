@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:00:21 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:56:12 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:06:18 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ Span & Span::operator=(const Span &assign)
 {
 	std::cout << "\e[0;33mAssignation Operator called of Span\e[0m" << std::endl;
 	if (this != &assign)
+	{
 		this->_maxSize = assign._maxSize;
+		this->_list = assign._list;
+	}
 	return (*this);
 }
 
