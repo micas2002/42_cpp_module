@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:00:21 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:04:53 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:36:40 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,32 +66,34 @@ int	Span::shortestSpan()
 	if (_maxSize < 2)
 		throw Span::insufficientNumbersException();
 
+	_list.sort();
+
 	std::list<int>::iterator	iter1 = _list.begin();
 	std::list<int>::iterator	iter2 = ++_list.begin();
 	int							shortestSpan = -1;
 	int							difference;
 	
-	_list.sort();
-	
 	while (iter2 != _list.end())
 	{
 		difference = abs((*iter2 - *iter1));
 		if (shortestSpan == -1 || shortestSpan > difference)		
-			shortestSpan = difference;	
-		iter1++;
-		iter2++;
+			shortestSpan = difference;
+		if (shortestSpan == 0)
+			break ;
+		++iter1;
+		++iter2;
 	}
 	return (shortestSpan);
 }
 
-void	Span::fillList(unsigned int rangeEnd)
+void	Span::fillList(unsigned int range)
 {
 	srand(time(NULL));
 	
-	for (unsigned int i = 0; i < rangeEnd; i++)
+	for (unsigned int i = 0; i < _maxSize ; i++)
 	{
 		// this->addNumber(i); // test with numbers with incrementation of 1 
-		this->addNumber(std::rand() % 100000);
+		this->addNumber(std::rand() % range);
 	}
 }
 

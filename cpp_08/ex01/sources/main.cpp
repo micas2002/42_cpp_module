@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:04:37 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:05:51 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:37:51 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main()
 	{
 		Span sp = Span(10000);
 
-		sp.fillList(10000);
+		sp.fillList(100000);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
