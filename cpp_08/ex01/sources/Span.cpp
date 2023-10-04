@@ -6,13 +6,13 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:00:21 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:50:12 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:56:12 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span() : _maxSize(5)
+Span::Span() : _maxSize(2)
 {
 	std::cout << "\e[0;33mDefault Constructor called of Span\e[0m" << std::endl;
 }

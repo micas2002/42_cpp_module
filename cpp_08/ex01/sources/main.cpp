@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:04:37 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:37:51 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:56:21 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,26 @@ int	main()
 	// 	std::cout << e.what() << std::endl;
 	// }
 	
+	// try
+	// {
+	// 	Span sp = Span(10000);
+
+	// 	sp.fillList(100000);
+	// 	std::cout << sp.shortestSpan() << std::endl;
+	// 	std::cout << sp.longestSpan() << std::endl;
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	
 	try
 	{
-		Span sp = Span(10000);
+		Span sp;
 
-		sp.fillList(100000);
+		sp.addNumber(1);
+		sp.addNumber(15);
+		sp.addNumber(5);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
@@ -62,6 +77,7 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+	
 	
 	return (0);
 }
