@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:00:21 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:36:40 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:50:12 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	Span::shortestSpan()
 	
 	while (iter2 != _list.end())
 	{
-		difference = abs((*iter2 - *iter1));
+		difference = (*iter2 - *iter1);
 		if (shortestSpan == -1 || shortestSpan > difference)		
 			shortestSpan = difference;
 		if (shortestSpan == 0)
