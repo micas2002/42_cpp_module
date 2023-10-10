@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:46:46 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/29 15:07:42 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:45:48 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,11 @@ int	ScalarConverter::isInt(std::string literal)
 
 int	ScalarConverter::isFloat(std::string literal)
 {
+	if (floatPseudoLiterals(literal))
+		return (1);
 	if ((int)literal.find_last_of(".") != -1 && (int)literal.find_last_of("f") != -1)
 	{
-		if (floatPseudoLiterals(literal) || ((int)literal.find_first_not_of("-0123456789.f") == -1
+		if (((int)literal.find_first_not_of("-0123456789.f") == -1
 			&& literal.find(".") == literal.find_last_of(".")
 			&& literal.find("f") == literal.find_last_of("f")))
 			return (1);
@@ -116,9 +118,11 @@ int	ScalarConverter::isFloat(std::string literal)
 
 int	ScalarConverter::isDouble(std::string literal)
 {
-	if ((	int)literal.find_last_of(".") != -1)
+	if (doublePseudoLiterals(literal))
+		return (1);
+	if ((int)literal.find_last_of(".") != -1)
 	{
-		if (doublePseudoLiterals(literal) || ((int)literal.find_first_not_of("-0123456789.") == -1
+		if (((int)literal.find_first_not_of("-0123456789.") == -1
 		&& literal.find(".") == literal.find_last_of(".")))
 		return (1);
 	}
@@ -189,8 +193,7 @@ void ScalarConverter::printValues(double d)
 		std::cout << "Int: impossible" << std::endl;
 	else
 		printInt(static_cast<int>(d));
-	if (d <= std::numeric_limits<float>::min() || d >= std::numeric_limits<float>::max()
-		|| d != d)
+	if (d <= std::numeric_limits<float>::min() || d >= std::numeric_limits<float>::max())
 		std::cout << "Float: impossible" << std::endl;
 	else
 		printFloat(static_cast<float>(d));
@@ -212,12 +215,12 @@ void ScalarConverter::printInt(int i)
 
 void ScalarConverter::printFloat(float f)
 {
-	std::cout << "Float: " << std::fixed << std::setprecision( 1 ) << f << "f"
+	std::cout << "Float: " << std::fixed << std::setprecision(1) << f << "f"
 		<< std::endl;
 }
 
 void ScalarConverter::printDouble(double d)
 {
-	std::cout << "Double: " << std::fixed << std::setprecision( 1 ) << d
+	std::cout << "Double: " << std::fixed << std::setprecision(1) << d
 		<< std::endl;
 }
