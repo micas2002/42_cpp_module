@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:13:43 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/02 17:26:53 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:18:19 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	identify(Base* p)
 		std::cout << "Type: B" << std::endl;
 	else if (dynamic_cast<C *>(p) != NULL)
 		std::cout << "Type: C" << std::endl;
+	else
+		std::cout << "Unknown type received" << std::endl;
 }
 
 Base * generate(void)

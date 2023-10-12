@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 17:11:30 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/01 13:22:05 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:20:36 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ template <typename T> T min(T x, T y)
 {
 	if (x == y)
 		return (y);
-	return (x < y) ? x : y;
+	return ((x < y) ? x : y);
 }
 
 template <typename T> T max(T x, T y)
 {
 	if (x == y)
 		return (y);
-	return (x > y) ? x : y;
+	return ((x > y) ? x : y);
 }
