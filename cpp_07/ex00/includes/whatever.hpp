@@ -6,13 +6,14 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 17:11:30 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/12 16:20:36 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:40:21 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-template <typename T> void swap(T& x, T& y)
+template <typename T>
+void swap(T& x, T& y)
 {
 	T temp;
 	
@@ -21,14 +22,16 @@ template <typename T> void swap(T& x, T& y)
 	y = temp;
 }
 
-template <typename T> T min(T x, T y)
+template <typename T>
+T min(T x, T y)
 {
 	if (x == y)
 		return (y);
 	return ((x < y) ? x : y);
 }
 
-template <typename T> T max(T x, T y)
+template <typename T>
+T max(T x, T y)
 {
 	if (x == y)
 		return (y);
