@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:06:04 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/16 12:55:20 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:51:23 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Array
 		{
 			std::cout << "\e[0;33mDefault Constructor called of Array\e[0m" << std::endl;
 		};
-
-		Array(unsigned int n) : _array(new T[n]), _n(n)
+	
+		Array(unsigned int n) : _array(new T[n]()), _n(n)
 		{
 			std::cout << "\e[0;33mConstructor called of Array\e[0m" << std::endl;
 		};

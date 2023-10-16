@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
@@ -14,6 +14,21 @@
 
 int	main()
 {
+	Array<int>	defaultArray(5);
+
+	try
+	{
+		std::cout << "size of defaultArray: " << defaultArray.size() << std::endl;
+		for (int i = 0; i < 6; i++)
+			std::cout << defaultArray[i] << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
 	Array<int>	intArray(5);
 
 	for (int i = 0; i < 5; i++)
@@ -21,6 +36,7 @@ int	main()
 		
 	try
 	{
+		std::cout << "size of intArray: " << intArray.size() << std::endl;
 		for (int i = 0; i < 6; i++)
 			std::cout << intArray[i] << std::endl;
 	}
@@ -38,6 +54,7 @@ int	main()
 		
 	try
 	{
+		std::cout << "size of charArray: " << charArray.size() << std::endl;
 		for (int i = 0; i < 12; i++)
 			std::cout << charArray[i] << std::endl;
 	}
@@ -55,9 +72,9 @@ int	main()
 		
 	try
 	{
+		std::cout << "size of floatArray: " << floatArray.size() << std::endl;
 		for (int i = 0; i < 5; i++)
 			std::cout << floatArray[i] << std::endl;
-		std::cout << "size of floatArray: " << floatArray.size() << std::endl;
 	}
 	catch (std::exception &e)
 	{
