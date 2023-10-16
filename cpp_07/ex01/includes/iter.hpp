@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:04:32 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/16 12:55:25 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:17:20 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 #include <iostream>
 
 template <typename T>
-void func(const T& array)
+void func(T& array)
 {
 	std::cout << array << std::endl;
 }
 
-template <typename T>
-void iter(T* array, int len, void (*func)(const T& x))
+template <typename T, typename F>
+void    iter(T* array, int len, F func)
 {
-	if (array == NULL)	
+    if (array == NULL)	
 		return ;	
 	for (int i = 0; i < len; i++)
 		func(array[i]);
