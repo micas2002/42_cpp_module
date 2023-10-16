@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:04:37 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/04 15:07:30 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:30:56 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
+
+	std::cout << std::endl;
+
 	try
 	{
 		Span sp = Span(10000);
@@ -62,7 +64,9 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
+
+	std::cout << std::endl;
+
 	try
 	{
 		Span sp;
@@ -77,6 +81,7 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
+
+	std::cout << std::endl;
 	return (0);
 }

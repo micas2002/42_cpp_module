@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
@@ -12,7 +12,7 @@
 
 #include "Span.hpp"
 
-Span::Span() : _maxSize(2)
+Span::Span() : _maxSize(2), _list()
 {
 	std::cout << "\e[0;33mDefault Constructor called of Span\e[0m" << std::endl;
 }
@@ -96,6 +96,7 @@ void	Span::fillList(unsigned int range)
 	for (unsigned int i = 0; i < _maxSize ; i++)
 	{
 		// this->addNumber(i); // test with numbers with incrementation of 1 
+		// (void)range;
 		this->addNumber(std::rand() % range);
 	}
 }
