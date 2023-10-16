@@ -6,9 +6,12 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 17:11:30 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/13 15:40:21 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:54:15 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 #include <iostream>
 
@@ -37,3 +40,5 @@ T max(T x, T y)
 		return (y);
 	return ((x > y) ? x : y);
 }
+
+#endif

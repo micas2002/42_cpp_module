@@ -6,9 +6,12 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:04:32 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/13 15:59:34 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:55:25 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ITER_HPP
+# define ITER_HPP
 
 #include <iostream>
 
@@ -22,7 +25,9 @@ template <typename T>
 void iter(T* array, int len, void (*func)(const T& x))
 {
 	if (array == NULL)	
-		return ;
+		return ;	
 	for (int i = 0; i < len; i++)
 		func(array[i]);
 }
+
+#endif

@@ -6,9 +6,12 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:06:04 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 12:52:30 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:55:20 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
 #include <iostream>
 
@@ -84,3 +87,5 @@ class Array
 			};
 		};
 };
+
+#endif
