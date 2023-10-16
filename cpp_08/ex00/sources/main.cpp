@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:59:49 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 15:32:28 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:13:24 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "exception: could not find occurrence of 5 int arr1" << std::endl;
+		std::cout << "exception: could not find occurrence of given number int arr1"
+			<< std::endl;
 	}
 
 	std::cout << std::endl;
@@ -47,7 +48,8 @@ int	main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "exception: could not find occurrence of 555 int arr2" << std::endl;
+		std::cout << "exception: could not find occurrence of given number int arr2"
+			<< std::endl;
 	}
 	return (0);
 }

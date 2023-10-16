@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:00:10 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/03 15:27:24 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:10:18 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <vector>
 #include <algorithm>
 
-template <typename T> int& easyfind(T container, int i)
+template <typename T>
+int& easyfind(T container, int i)
 {
 	typename T::iterator iter;
 	
