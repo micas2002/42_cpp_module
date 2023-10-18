@@ -6,21 +6,16 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:45 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/06 16:07:45 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:16:14 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange()
+BitcoinExchange::BitcoinExchange(std::string inputFile) : _srcFile(inputFile)
 {
 	std::cout << "\e[0;33mDefault Constructor called of BitcoinExchange\e[0m" << std::endl;
-}
-
-BitcoinExchange::BitcoinExchange(std::string file) : _srcFile(file)
-{
-	std::cout << "\e[0;33mConstructor called of BitcoinExchange\e[0m" << std::endl;
-	
+	checkFiles();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _srcFile(copy._srcFile)
@@ -42,16 +37,49 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &assign)
 	return (*this);
 }
 
-int	BitcoinExchange::checkSrcFile(void)
+void	BitcoinExchange::checkFiles()
 {
-	std::ifstream	srcFile;
-	
-	srcFile.open(_srcFile.c_str());
-	if (!srcFile)
+	std::ifstream	databaseFile;
+	std::ifstream	inputFile;
+
+	// databaseFile.open("data.csv");
+	// if (!databaseFile)
+	// 	throw NoDatabaseFileException();
+	// databaseFile.close();
+
+	// databaseFile.open(_srcFile.c_str());
+	// if (!databaseFile)
+	// 	throw NoInputFileException();
+	checkInputFileContent();
+	// databaseFile.close();
+}
+
+void	BitcoinExchange::checkInputFileContent()
+{
+	std::ifstream	inputFile;
+	std::string		line;
+	std::string		date;
+	struct tm 		tm;
+
+	while (std::getline(inputFile, line))
 	{
-		std::cout << "source file doesn't exist\n";
-		return (0);
+		date = line.substr(10);
+		if (strptime(date.c_str(), "%Y/%m/%d", &tm) == NULL)
+			throw InvalidDateException();
 	}
-	srcFile.close();
-	return (1);
+}
+
+const char* BitcoinExchange::NoDatabaseFileException::what() const throw()
+{
+	return ("Exception: no database file found\n");
+}
+
+const char* BitcoinExchange::NoInputFileException::what() const throw()
+{
+	return ("Exception: no input file found\n");
+}
+
+const char* BitcoinExchange::InvalidDateException::what() const throw()
+{
+	return ("Exception: invalid date found\n");
 }
