@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:39 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/19 14:19:33 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:31:37 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <cstdlib>
+#include <limits>
 
 class BitcoinExchange
 {
@@ -33,6 +35,7 @@ class BitcoinExchange
 		void	checkFiles();
 		void	createDatabase();
 		void	convertBitcoin();
+		void	printAmount(std::string date, std::string amount);
 
 		class NoDatabaseFileException : public std::exception
 		{

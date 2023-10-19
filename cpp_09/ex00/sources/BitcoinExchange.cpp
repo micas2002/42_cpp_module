@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:45 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/19 14:36:40 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:34:43 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,35 @@ void	BitcoinExchange::convertBitcoin()
 			std::cout << "Error: bad input => " << line << std::endl;
 			continue ;
 		}
-		amount = line.substr(date.length() + 1, line.length() - (date.length() + 1));
-		std::cout << "amount: " << amount << std::endl;
+		amount = line.substr(date.length() + 3, line.length() - (date.length() + 1));
+		printAmount(date, amount);
 	}
 	inputFile.close();
+}
+
+void	BitcoinExchange::printAmount(std::string date, std::string amount)
+{
+	float	databaseValue;
+	float	convertedAmount;
+	std::map<std::string, std::string>::iterator iter = _database.upper_bound(date);
+
+	if (iter != _database.begin())
+		iter--;
+
+	databaseValue = std::strtof(iter->second.c_str(), NULL);
+	convertedAmount = std::strtof(amount.c_str(), NULL);
+	if (convertedAmount < 0)
+	{
+		std::cout << "Error: not a positive number." << std::endl;
+		return ;
+	}
+	if (convertedAmount >= std::numeric_limits<int>::max())
+	{
+		std::cout << "Error: too large a number." << std::endl;
+		return ;
+	}
+	std::cout << iter->first << " => " << amount << " = " << convertedAmount * databaseValue
+		<< std::endl;
 }
 
 const char* BitcoinExchange::NoDatabaseFileException::what() const throw()
