@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:45 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/19 14:32:41 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:36:40 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,18 @@ void	BitcoinExchange::convertBitcoin()
 	while (std::getline(inputFile, line))
 	{
 		if (line.size() < 13)
+		{
 			std::cout << "Error: bad input => " << line << std::endl;
+			continue ;
+		}
 		date = line.substr(0, 10);
 		if (strptime(date.c_str(), "%Y-%m-%d", &tm) == NULL)
+		{
 			std::cout << "Error: bad input => " << line << std::endl;
+			continue ;
+		}
 		amount = line.substr(date.length() + 1, line.length() - (date.length() + 1));
+		std::cout << "amount: " << amount << std::endl;
 	}
 	inputFile.close();
 }
