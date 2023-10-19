@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:45 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/18 17:16:14 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:32:41 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 BitcoinExchange::BitcoinExchange(std::string inputFile) : _srcFile(inputFile)
 {
 	std::cout << "\e[0;33mDefault Constructor called of BitcoinExchange\e[0m" << std::endl;
-	checkFiles();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _srcFile(copy._srcFile)
@@ -42,31 +41,58 @@ void	BitcoinExchange::checkFiles()
 	std::ifstream	databaseFile;
 	std::ifstream	inputFile;
 
-	// databaseFile.open("data.csv");
-	// if (!databaseFile)
-	// 	throw NoDatabaseFileException();
-	// databaseFile.close();
+	databaseFile.open("data.csv");
+	if (!databaseFile)
+		throw NoDatabaseFileException();
+	databaseFile.close();
 
-	// databaseFile.open(_srcFile.c_str());
-	// if (!databaseFile)
-	// 	throw NoInputFileException();
-	checkInputFileContent();
-	// databaseFile.close();
+	inputFile.open(_srcFile.c_str());
+	if (!inputFile)
+		throw NoInputFileException();
+	inputFile.close();
 }
 
-void	BitcoinExchange::checkInputFileContent()
+void	BitcoinExchange::createDatabase()
+{
+	std::ifstream	databaseFile;
+	std::string		info;
+	std::string		date;
+
+	databaseFile.open("data.csv");
+	if (!databaseFile)
+		throw NoDatabaseFileException();
+	std::getline(databaseFile, info);
+	while (std::getline(databaseFile, info))
+	{
+		date = info.substr(0, info.find(","));
+		info.erase(0, info.find(",") + 1);
+		_database[date] = info;
+	}
+	databaseFile.close();
+}
+
+void	BitcoinExchange::convertBitcoin()
 {
 	std::ifstream	inputFile;
 	std::string		line;
 	std::string		date;
+	std::string		amount;
 	struct tm 		tm;
 
+	inputFile.open(_srcFile.c_str());
+	if (!inputFile)
+		throw NoInputFileException();
+	std::getline(inputFile, line);
 	while (std::getline(inputFile, line))
 	{
-		date = line.substr(10);
-		if (strptime(date.c_str(), "%Y/%m/%d", &tm) == NULL)
-			throw InvalidDateException();
+		if (line.size() < 13)
+			std::cout << "Error: bad input => " << line << std::endl;
+		date = line.substr(0, 10);
+		if (strptime(date.c_str(), "%Y-%m-%d", &tm) == NULL)
+			std::cout << "Error: bad input => " << line << std::endl;
+		amount = line.substr(date.length() + 1, line.length() - (date.length() + 1));
 	}
+	inputFile.close();
 }
 
 const char* BitcoinExchange::NoDatabaseFileException::what() const throw()
@@ -77,9 +103,4 @@ const char* BitcoinExchange::NoDatabaseFileException::what() const throw()
 const char* BitcoinExchange::NoInputFileException::what() const throw()
 {
 	return ("Exception: no input file found\n");
-}
-
-const char* BitcoinExchange::InvalidDateException::what() const throw()
-{
-	return ("Exception: invalid date found\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:39 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/18 16:52:12 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:19:33 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 #include <iostream>
 #include <fstream>
-#include <list>
+#include <map>
 
 class BitcoinExchange
 {
 	private:
-		std::string 			_srcFile;
+		std::string								_srcFile;
+		std::map<std::string, std::string>		_database;
 
 	public:
 		BitcoinExchange(std::string inputFile);
@@ -30,7 +31,8 @@ class BitcoinExchange
 		BitcoinExchange & operator = (const BitcoinExchange &assign);
 	
 		void	checkFiles();
-		void	checkInputFileContent();
+		void	createDatabase();
+		void	convertBitcoin();
 
 		class NoDatabaseFileException : public std::exception
 		{
@@ -38,11 +40,6 @@ class BitcoinExchange
 		};
 		
 		class NoInputFileException : public std::exception
-		{
-			public: virtual const char* what() const throw();
-		};
-		
-		class InvalidDateException : public std::exception
 		{
 			public: virtual const char* what() const throw();
 		};
