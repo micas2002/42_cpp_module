@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:39 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/19 17:31:37 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:22:15 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <fstream>
 #include <map>
 #include <cstdlib>
-#include <limits>
 
 class BitcoinExchange
 {

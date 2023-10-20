@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:19:45 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/19 17:34:43 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:28:18 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,12 @@ void	BitcoinExchange::printAmount(std::string date, std::string amount)
 		std::cout << "Error: not a positive number." << std::endl;
 		return ;
 	}
-	if (convertedAmount >= std::numeric_limits<int>::max())
+	if (convertedAmount > 1000)
 	{
 		std::cout << "Error: too large a number." << std::endl;
 		return ;
 	}
-	std::cout << iter->first << " => " << amount << " = " << convertedAmount * databaseValue
+	std::cout << date << " => " << amount << " = " << convertedAmount * databaseValue
 		<< std::endl;
 }
 
