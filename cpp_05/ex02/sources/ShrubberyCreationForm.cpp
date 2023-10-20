@@ -6,26 +6,26 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:21:16 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 15:07:44 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:26:17 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
-	,target("target")
+	, _target("target")
 {
 	std::cout << "\e[0;33mDefault Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
-	,target(target)
+	,_target(target)
 {
 	std::cout << "\e[0;33mConstructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy): AForm(copy)
-	, target(copy.target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy)
+	, _target(copy._target)
 {
 	std::cout << "\e[0;33mCopy Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 	*this = copy;
@@ -41,13 +41,13 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreation
 	std::cout << "\e[0;33mAssignation Operator called of ShrubberyCreationForm\e[0m"
 		<< std::endl;
 	if (this != &assign)
-		this->target = assign.target;
+		AForm::operator=(assign);
 	return (*this);
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	std::ofstream file((executor.getName() + "_shrubbery").c_str());
+	std::ofstream file((this->_target + "_shrubbery").c_str());
 
 	if (executor.getGrade() > this->getExecuteGrade())
 		throw Bureaucrat::GradeTooLowException();

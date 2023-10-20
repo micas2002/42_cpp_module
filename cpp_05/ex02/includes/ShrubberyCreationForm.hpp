@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:43:12 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 14:28:34 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:23:15 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class ShrubberyCreationForm : public AForm
 {
 	private:
-		std::string target;
+		std::string _target;
 
 	public:
 		ShrubberyCreationForm();

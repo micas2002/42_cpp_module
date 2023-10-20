@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:42:59 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 14:41:18 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:21:01 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class PresidentialPardonForm : public AForm
 {
 	private:
-		std::string target;
+		std::string _target;
 
 	public:
 		PresidentialPardonForm();

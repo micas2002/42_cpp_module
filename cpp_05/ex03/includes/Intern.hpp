@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:20:11 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 15:39:09 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:54:29 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 class Intern
 {
+	private:
+
 	public:
 		Intern();
 		Intern(const Intern &copy);

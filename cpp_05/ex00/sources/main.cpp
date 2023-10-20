@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:06:28 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 11:56:06 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:14:01 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(void)
 {
-	
 	Bureaucrat kevin = Bureaucrat();
 	try
 	{

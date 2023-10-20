@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:06:28 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 15:55:31 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:57:55 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(void)
 		delete rrf;
 	}
 	
+	std::cout << std::endl;
+	
 	{
 		Intern  someRandomIntern;
 		AForm*   rrf;
@@ -34,7 +36,9 @@ int	main(void)
 		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
 		delete rrf;
 	}
-	
+
+	std::cout << std::endl;
+
 	{
 		Intern  someRandomIntern;
 		AForm*   rrf;
@@ -42,7 +46,9 @@ int	main(void)
 		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
 		delete rrf;
 	}
-	
+
+		std::cout << std::endl;
+
 	{
 		Intern  someRandomIntern;
 		AForm*   rrf;
@@ -51,6 +57,8 @@ int	main(void)
 		rrf = someRandomIntern.makeForm("plane request", "Bender");
 		delete rrf;
 	}
+
+	std::cout << std::endl;
 
 	/*try
 	{

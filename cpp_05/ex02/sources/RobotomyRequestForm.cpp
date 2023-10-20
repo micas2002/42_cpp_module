@@ -6,26 +6,26 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:21:02 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/26 14:40:42 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:26:01 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
-	, target("target")
+	, _target("target")
 {
 	std::cout << "\e[0;33mDefault Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45)
-	, target(target)
+	, _target(target)
 {
 	std::cout << "\e[0;33mConstructor called of RobotomyRequestForm\e[0m" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy): AForm(copy)
-	, target(copy.target)
+	, _target(copy._target)
 {
 	*this = copy;
 }
@@ -38,7 +38,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &assign)
 {
 	if (this != &assign)
-		this->target = assign.target;
+		AForm::operator=(assign);
 	return (*this);
 }
 
@@ -52,7 +52,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	{
 		if (i % 2 == 0)
 		{
-			std::cout << "*LOUD DRILLING NOISES*" <<  std::endl << executor.getName()
+			std::cout << "*LOUD DRILLING NOISES*" <<  std::endl << this->_target
 				<< " has been robotomized successfully." << std::endl;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:08:27 by mibernar          #+#    #+#             */
-/*   Updated: 2023/09/29 13:55:40 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:39:15 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class ScalarConverter
 
 	public:
 		static void		convert(std::string litereal);
+
 		static int		getDataType(std::string literal);
 		static int		isChar(std::string litereal);
 		static int		isInt(std::string literal);
