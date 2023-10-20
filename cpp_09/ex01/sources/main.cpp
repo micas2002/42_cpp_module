@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:21 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/20 17:12:56 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:44:05 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 		RPN	rpn(argv[1]);
 		
 		rpn.parse();
-
 	}
 	catch (const std::exception& e)
 	{

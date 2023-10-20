@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:18 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/20 17:19:18 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:35:04 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RPN::RPN(std::string input) : _expression(input)
 	std::cout << "\e[0;33mDefault Constructor called of RPN\e[0m" << std::endl;
 }
 
-RPN::RPN(const RPN &copy)
+RPN::RPN(const RPN &copy) : _expression(copy._expression), _stack(copy._stack)
 {
 	std::cout << "\e[0;33mCopy Constructor called of RPN\e[0m" << std::endl;
 	*this = copy;
@@ -31,7 +31,10 @@ RPN::~RPN()
 RPN & RPN::operator=(const RPN &assign)
 {
 	std::cout << "\e[0;33mAssignation Operator called of RPN\e[0m" << std::endl;
-		
+	if ( this != &assign ) {
+		_expression = assign._expression;
+		_stack = assign._stack;
+	}
 	return (*this);
 }
 
@@ -42,12 +45,13 @@ void	RPN::parse()
 		if (isspace(_expression[i]))
 			continue;
 		else if (isdigit(_expression[i]))
-			_stack.push(static_cast<int>(_expression[i]));
+			_stack.push(_expression[i] - '0');
 		else if (isOperator(_expression[i]))
 			calculate(_expression[i]);
 		else
 			throw UnkownCharacterException();
 	}
+	std::cout << _stack.top() << std::endl;
 }
 
 int	RPN::isOperator(char c)
@@ -60,23 +64,28 @@ int	RPN::isOperator(char c)
 
 void	RPN::calculate(char op)
 {
+	int	x;
+	int	y;
+	
+	x = _stack.top();
+	_stack.pop();
+	y = _stack.top();
+	_stack.pop();
+
 	switch (op)
 	{
 		case '+':
-			plusOperation();
+			_stack.push(y + x);
 			break;
 		case '-':
-			minusOperaton();
+			_stack.push(y - x);
 			break;
 		case '/':
-			divisionOperation();
+			_stack.push(y / x);
 			break;
 		case '*':
-			multiplyOperation();
+			_stack.push(y * x);
 			break;
-	
-	default:
-		break;
 	}
 }
 

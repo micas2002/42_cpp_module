@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:55 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/20 17:18:16 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:41:59 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ class RPN
 		void	parse();
 		void	calculate(char op);
 		int		isOperator(char c);
-		
-		void	plusOperation();
-		void	minusOperaton();
-		void	divisionOperation();
-		void	multiplyOperation();
 
 		class UnkownCharacterException : public std::exception
 		{
