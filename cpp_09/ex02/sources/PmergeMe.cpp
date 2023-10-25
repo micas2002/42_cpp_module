@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/25 13:56:56 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:31:42 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,59 @@ void	PmergeMe::listSort()
 	makePairsList();
 	insertSortPairs();
 	
+	std::list<std::pair<int, int> >::iterator it = _pairList.begin();
+
+    for (; it != _pairList.end(); ++it)
+		_sortedList.push_back(it->second);
+
+	// std::cout << "begin sort:" << std::endl;
+	
+	// std::list<int>::iterator a= _sortedList.begin();
+	// for (; a != _sortedList.end(); ++a)
+	// 	std::cout << *a << std::endl;
+
+	// std::cout << std::endl;
+
+	std::list<int>::iterator currentB = _sortedList.begin();
+	std::list<int>::iterator currentA;
+	std::list<int>::iterator temp;
+
+	it = _pairList.begin();
+	
+	// _sortedList.insert(currentA, it->first);
+	for (; currentB != _sortedList.end(); ++currentB)
+	{
+		currentA = currentB;
+		--currentA;
+		for (; ; --currentA)
+		{
+			if (currentA == _sortedList.begin())
+			{
+				if (it->first > *currentA)
+					_sortedList.insert(++currentA, it->first);
+				else
+					_sortedList.push_front(it->first);
+				break;
+			}
+			if (it->first > *currentA)
+			{
+				++currentA;
+				_sortedList.insert(currentA, it->first);
+				break;
+			}
+		}
+		++it;
+		// temp = _sortedList.begin();
+	
+		// for (; temp != _sortedList.end(); ++temp)
+		// std::cout << *temp << std::endl;
+		// std::cout << std::endl;
+	}
+	
+	// temp = _sortedList.begin();
+	
+	// for (; temp != _sortedList.end(); ++temp)
+	// 	std::cout << *temp << std::endl;
 	
 }
 
@@ -96,6 +149,15 @@ void	PmergeMe::insertSortPairs()
             --temp2;
         }
     }
+	
+	current = _pairList.begin();
+
+	// std::cout << "sorted pairs: " << std::endl;
+
+	// for (; current != _pairList.end(); ++current)
+	// 	std::cout << current->first << " " << current->second << std::endl;
+
+	// std::cout << std::endl;
 }
 
 void	PmergeMe::printUnsorted()
