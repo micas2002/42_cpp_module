@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/23 16:02:38 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:56:56 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ PmergeMe::~PmergeMe()
 PmergeMe & PmergeMe::operator=(const PmergeMe &assign)
 {
 	std::cout << "\e[0;33mAssignation Operator called of PmergeMe\e[0m" << std::endl;
-	
+	(void)assign;
 	return (*this);
 }
 
@@ -44,11 +44,20 @@ void	PmergeMe::addToList(char **argv)
 		number = std::atoi(argv[i]);
 		if (number < 0)
 			throw negativeNUmberException();
-		_unsortedList.push_front(number);
-	}
+		_unsortedList.push_back(number);
+	}	
+	listSort();
 }
 
 void	PmergeMe::listSort()
+{
+	makePairsList();
+	insertSortPairs();
+	
+	
+}
+
+void	PmergeMe::makePairsList()
 {
 	std::list<int>::iterator	it;
 	int	numb1;
@@ -59,14 +68,34 @@ void	PmergeMe::listSort()
 		++it;
 		if (it == _unsortedList.end())
 		{
-			_sortedList.push_front(numb1);
+			_sortedList.push_back(numb1);
 			break;
 		}
 		if (numb1 > *it)
-			_pairList.push_front(std::make_pair(*it, numb1));
+			_pairList.push_back(std::make_pair(*it, numb1));
 		else
-			_pairList.push_front(std::make_pair(numb1, *it));
+			_pairList.push_back(std::make_pair(numb1, *it));
 	}
+}
+
+void	PmergeMe::insertSortPairs()
+{
+	std::list<std::pair<int, int> >::iterator current = _pairList.begin();
+	++current;
+
+    for (; current != _pairList.end(); ++current)
+	{
+        std::list<std::pair<int, int> >::iterator temp = current;
+        std::list<std::pair<int, int> >::iterator temp2 = temp;
+		--temp2;
+
+        while (temp != _pairList.begin() && temp->second < temp2->second)
+		{
+            std::swap(*temp, *temp2);
+            --temp;
+            --temp2;
+        }
+    }
 }
 
 void	PmergeMe::printUnsorted()

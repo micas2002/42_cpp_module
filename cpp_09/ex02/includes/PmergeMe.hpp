@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:44 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/23 15:49:45 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:56:26 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PMERGEME_HPP
 
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 #include <list>
 #include <cstdlib>
 
@@ -21,7 +23,7 @@ class PmergeMe
 {
 	private:
 		std::list<int>					_unsortedList;
-		std::list<std::pair<int, int>>	_pairList;
+		std::list<std::pair<int, int> >	_pairList;
 		std::list<int>					_sortedList;
 
 	public:
@@ -30,10 +32,12 @@ class PmergeMe
 		~PmergeMe();
 		
 		PmergeMe & operator = (const PmergeMe &assign);
-	
+
 		void	addToList(char **argv);
 		void	listSort();
-		void	dequeSort();
+		void	makePairsList();
+		void	insertSortPairs();
+		// void	dequeSort();
 		
 		void	printUnsorted();
 		

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:59:01 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/23 14:57:32 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:01:08 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	{
 		PmergeMe	a;
 		
-		a.addToList();
+		a.addToList(argv);
 	}
 	catch(const std::exception& e)
 	{
