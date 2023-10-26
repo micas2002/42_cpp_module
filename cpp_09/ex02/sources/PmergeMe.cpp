@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/26 11:49:21 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:25:16 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,23 @@ PmergeMe & PmergeMe::operator=(const PmergeMe &assign)
 	return (*this);
 }
 
-void	PmergeMe::addToList(char **argv)
+void	PmergeMe::sort(char **argv)
 {
-	int	number;
-
-	for (int i = 1; argv[i]; i++)
-	{
-		number = std::atoi(argv[i]);
-		if (number < 0)
-			throw negativeNUmberException();
-		_unsortedList.push_back(number);
-	}	
-	listSort();
+	_listTime = clock();
+	
+	listSort(argv);
+	
+	_listTime = clock() - _listTime;
+	
+	printList();
+	printTime();
 }
 
-void	PmergeMe::listSort()
+void	PmergeMe::listSort(char **argv)
 {
+	addToList(argv);
 	makePairsList();
-	insertSortPairs();
+	insertSortPairsList();
 	
 	std::list<std::pair<int, int> >::iterator it = _pairList.begin();
 
@@ -65,7 +64,6 @@ void	PmergeMe::listSort()
 
 	it = _pairList.begin();
 	
-	// _sortedList.insert(currentA, it->first);
 	for (; currentB != _sortedList.end(); ++currentB)
 	{
 		currentA = currentB;
@@ -93,6 +91,20 @@ void	PmergeMe::listSort()
 	}
 }
 
+void	PmergeMe::addToList(char **argv)
+{
+	int	number;
+
+	for (int i = 1; argv[i]; i++)
+	{
+		number = std::atoi(argv[i]);
+		if (number < 0)
+			throw negativeNUmberException();
+		_unsortedList.push_back(number);
+	}	
+}
+
+
 void	PmergeMe::makePairsList()
 {
 	std::list<int>::iterator	it;
@@ -114,7 +126,7 @@ void	PmergeMe::makePairsList()
 	}
 }
 
-void	PmergeMe::insertSortPairs()
+void	PmergeMe::insertSortPairsList()
 {
 	std::list<std::pair<int, int> >::iterator current = _pairList.begin();
 	++current;
@@ -136,14 +148,29 @@ void	PmergeMe::insertSortPairs()
 	current = _pairList.begin();
 }
 
-void	PmergeMe::printUnsorted()
+void	PmergeMe::printList()
 {
-	std::list<int>::iterator	it;
+	std::list<int>::iterator	it = _unsortedList.begin();
 
 	std::cout << "Before: ";
 	for (it = _unsortedList.begin(); it != _unsortedList.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
+
+	it = _sortedList.begin();
+
+	std::cout << "After:  ";
+	for (it = _sortedList.begin(); it != _sortedList.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
+void	PmergeMe::printTime()
+{
+	std::cout << "Time to process a range of " <<  _sortedList.size()
+		<< "elements with std::list : "
+		<< (double)( (double)_listTime / CLOCKS_PER_SEC ) * 1000
+		<< " miliseconds " << std::endl;
 }
 
 const char*	PmergeMe::negativeNUmberException::what() const throw()
