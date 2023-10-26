@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/25 15:31:42 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:49:21 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,6 @@ void	PmergeMe::listSort()
     for (; it != _pairList.end(); ++it)
 		_sortedList.push_back(it->second);
 
-	// std::cout << "begin sort:" << std::endl;
-	
-	// std::list<int>::iterator a= _sortedList.begin();
-	// for (; a != _sortedList.end(); ++a)
-	// 	std::cout << *a << std::endl;
-
-	// std::cout << std::endl;
-
 	std::list<int>::iterator currentB = _sortedList.begin();
 	std::list<int>::iterator currentA;
 	std::list<int>::iterator temp;
@@ -80,6 +72,8 @@ void	PmergeMe::listSort()
 		--currentA;
 		for (; ; --currentA)
 		{
+			if (it->first == -1)
+				break;
 			if (currentA == _sortedList.begin())
 			{
 				if (it->first > *currentA)
@@ -96,18 +90,7 @@ void	PmergeMe::listSort()
 			}
 		}
 		++it;
-		// temp = _sortedList.begin();
-	
-		// for (; temp != _sortedList.end(); ++temp)
-		// std::cout << *temp << std::endl;
-		// std::cout << std::endl;
 	}
-	
-	// temp = _sortedList.begin();
-	
-	// for (; temp != _sortedList.end(); ++temp)
-	// 	std::cout << *temp << std::endl;
-	
 }
 
 void	PmergeMe::makePairsList()
@@ -121,7 +104,7 @@ void	PmergeMe::makePairsList()
 		++it;
 		if (it == _unsortedList.end())
 		{
-			_sortedList.push_back(numb1);
+			_pairList.push_back(std::make_pair(-1, numb1));
 			break;
 		}
 		if (numb1 > *it)
@@ -151,13 +134,6 @@ void	PmergeMe::insertSortPairs()
     }
 	
 	current = _pairList.begin();
-
-	// std::cout << "sorted pairs: " << std::endl;
-
-	// for (; current != _pairList.end(); ++current)
-	// 	std::cout << current->first << " " << current->second << std::endl;
-
-	// std::cout << std::endl;
 }
 
 void	PmergeMe::printUnsorted()
