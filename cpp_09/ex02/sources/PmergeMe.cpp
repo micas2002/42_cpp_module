@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/26 12:25:16 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:51:18 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	PmergeMe::sort(char **argv)
 	listSort(argv);
 	
 	_listTime = clock() - _listTime;
+	
+	_dequeTime = clock();
+	
+	dequeSort(argv);
+	
+	_dequeTime = clock() - _dequeTime;
 	
 	printList();
 	printTime();
@@ -104,13 +110,12 @@ void	PmergeMe::addToList(char **argv)
 	}	
 }
 
-
 void	PmergeMe::makePairsList()
 {
-	std::list<int>::iterator	it;
+	std::list<int>::iterator	it = _unsortedList.begin();
 	int	numb1;
 
-	for (it = _unsortedList.begin(); it != _unsortedList.end(); it++)	
+	for (; it != _unsortedList.end(); ++it)	
 	{
 		numb1 = *it;
 		++it;
@@ -144,8 +149,110 @@ void	PmergeMe::insertSortPairsList()
             --temp2;
         }
     }
+}
+
+void	PmergeMe::dequeSort(char **argv)
+{
+	addToDeque(argv);
+	makePairsDeque();
+	insertSortPairsDeque();
 	
-	current = _pairList.begin();
+	std::deque<std::pair<int, int> >::iterator it = _pairDeque.begin();
+
+    for (; it != _pairDeque.end(); ++it)
+		_sortedDeque.push_back(it->second);
+
+	std::deque<int>::iterator currentB = _sortedDeque.begin();
+	std::deque<int>::iterator currentA = currentB;
+	std::deque<int>::iterator temp;
+
+	it = _pairDeque.begin();
+	if (it->first != -1)
+	{
+		_sortedDeque.push_front(it->first);
+		++it;
+		++currentB;
+	}
+	for (; currentB != _sortedDeque.end(); ++currentB)
+	{
+		currentA = currentB;
+		--currentA;
+		for (; ; --currentA)
+		{
+			if (it->first == -1)
+				break;
+			if (currentA == _sortedDeque.begin())
+			{
+				if (it->first > *currentA)
+					_sortedDeque.insert(++currentA, it->first);
+				else
+					_sortedDeque.push_front(it->first);
+				break;
+			}
+			if (it->first > *currentA)
+			{
+				++currentA;
+				_sortedDeque.insert(currentA, it->first);
+				break;
+			}
+		}
+		currentB = std::find(_sortedDeque.begin(), _sortedDeque.end(), it->second);
+		++it;
+	}
+}
+
+void	PmergeMe::addToDeque(char **argv)
+{
+	int	number;
+
+	for (int i = 1; argv[i]; i++)
+	{
+		number = std::atoi(argv[i]);
+		if (number < 0)
+			throw negativeNUmberException();
+		_unsortedDeque.push_back(number);
+	}
+}
+
+void	PmergeMe::makePairsDeque()
+{
+	std::deque<int>::iterator	it = _unsortedDeque.begin();
+	int numb1;
+	
+	for (; it != _unsortedDeque.end(); ++it)
+	{
+		numb1 = *it;
+		++it;
+		if (it == _unsortedDeque.end())
+		{
+			_pairDeque.push_back(std::make_pair(-1, numb1));
+			break;
+		}
+		if (numb1 > *it)
+			_pairDeque.push_back((std::make_pair(*it, numb1)));
+		else
+			_pairDeque.push_back(std::make_pair(numb1, *it));
+	}
+}
+
+void	PmergeMe::insertSortPairsDeque()
+{
+	std::deque<std::pair<int, int> >::iterator	current = _pairDeque.begin();
+	++current;
+	
+	for (; current != _pairDeque.end(); ++current)
+	{
+		std::deque<std::pair<int, int> >::iterator	temp = current;
+		std::deque<std::pair<int, int> >::iterator	temp2 = temp;
+		--temp2;
+		
+		while (temp != _pairDeque.begin() && temp->second < temp2->second)
+		{
+			std::swap(*temp, *temp2);
+			--temp;
+			--temp2;
+		}
+	}
 }
 
 void	PmergeMe::printList()
