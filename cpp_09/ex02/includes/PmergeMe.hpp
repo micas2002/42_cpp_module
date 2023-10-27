@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:44 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/27 15:41:08 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:41:05 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ class PmergeMe
 		void	printList();
 		void	printTime();
 		
-		class negativeNUmberException : public std::exception
+		class invalidArgumentFoundException : public std::exception
 		{
 			public: virtual const char* what() const throw();
 		};

@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/27 16:55:59 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:44:02 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,9 @@ void	PmergeMe::addToList(char **argv)
 	for (int i = 1; argv[i]; i++)
 	{
 		number = std::atoi(argv[i]);
-		if (number < 0)
-			throw negativeNUmberException();
+		if (number < 0 || std::find(_unsortedList.begin()
+			, _unsortedList.end(), number) != _unsortedList.end())
+			throw invalidArgumentFoundException();
 		_unsortedList.push_back(number);
 	}	
 }
@@ -208,8 +209,9 @@ void	PmergeMe::addToDeque(char **argv)
 	for (int i = 1; argv[i]; i++)
 	{
 		number = std::atoi(argv[i]);
-		if (number < 0)
-			throw negativeNUmberException();
+		if (number < 0 || std::find(_unsortedDeque.begin()
+			, _unsortedDeque.end(), number) != _unsortedDeque.end())
+			throw invalidArgumentFoundException();
 		_unsortedDeque.push_back(number);
 	}
 }
@@ -270,6 +272,21 @@ void	PmergeMe::printList()
 	for (it = _sortedList.begin(); it != _sortedList.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
+	
+	std::cout << "\ndeque\n";
+	std::deque<int>::iterator	it2 = _unsortedDeque.begin();
+
+	std::cout << "Before: ";
+	for (it2 = _unsortedDeque.begin(); it2 != _unsortedDeque.end(); it2++)
+		std::cout << *it2 << " ";
+	std::cout << std::endl;
+
+	it2 = _sortedDeque.begin();
+
+	std::cout << "After:  ";
+	for (it2 = _sortedDeque.begin(); it2 != _sortedDeque.end(); it2++)
+		std::cout << *it2 << " ";
+	std::cout << std::endl;
 }
 
 void	PmergeMe::printTime()
@@ -285,7 +302,7 @@ void	PmergeMe::printTime()
 		<< " miliseconds " << std::endl;
 }
 
-const char*	PmergeMe::negativeNUmberException::what() const throw()
+const char*	PmergeMe::invalidArgumentFoundException::what() const throw()
 {
 	return ("Exception: negative number found\n");
 }
