@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/27 16:51:18 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:55:59 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,8 +275,13 @@ void	PmergeMe::printList()
 void	PmergeMe::printTime()
 {
 	std::cout << "Time to process a range of " <<  _sortedList.size()
-		<< "elements with std::list : "
+		<< " elements with std::list : "
 		<< (double)( (double)_listTime / CLOCKS_PER_SEC ) * 1000
+		<< " miliseconds " << std::endl;
+	
+	std::cout << "Time to process a range of " <<  _sortedDeque.size()
+		<< " elements with std::deque : "
+		<< (double)( (double)_dequeTime / CLOCKS_PER_SEC ) * 1000
 		<< " miliseconds " << std::endl;
 }
 
