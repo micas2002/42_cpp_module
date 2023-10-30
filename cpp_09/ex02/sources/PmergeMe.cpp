@@ -6,7 +6,7 @@
 /*   By: mibernar <mibernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:58:53 by mibernar          #+#    #+#             */
-/*   Updated: 2023/10/27 17:44:02 by mibernar         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:11:42 by mibernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,5 +304,5 @@ void	PmergeMe::printTime()
 
 const char*	PmergeMe::invalidArgumentFoundException::what() const throw()
 {
-	return ("Exception: negative number found\n");
+	return ("Exception: invalid input found\n");
 }
